@@ -1,6 +1,6 @@
 export const MEMBERS = [
   {
-    en: 'Jiwoo', kr: '최지우', zh: '崔智宇',
+    en: 'Jiwoo', kr: '최지우', zh: '崔志宇',
     role: '隊長 · 舞蹈擔當 · 饒舌擔當 · 歌唱擔當 · 顏值擔當',
     mbti: 'ISTJ', bday: '2006.09.07',
     emoji: '🩵', tone: 'sky',
@@ -25,7 +25,7 @@ export const MEMBERS = [
     quoteSource: 'JIWOO · 出道採訪',
   },
   {
-    en: 'Carmen', kr: '카르멘', zh: '卡門妮塔',
+    en: 'Carmen', kr: '카르멘', zh: 'Nyoman Ayu Carmenita',
     fullName: 'Nyoman Ayu Carmenita',
     role: '歌唱擔當',
     mbti: 'INFP', bday: '2006.03.28',
@@ -52,7 +52,7 @@ export const MEMBERS = [
     quoteSource: 'CARMEN · 出道採訪',
   },
   {
-    en: 'Yuha', kr: '유하람', zh: '劉河藍',
+    en: 'Yuha', kr: '유하람', zh: '柳河覽',
     englishName: 'Maria Yu',
     role: '歌唱擔當 · 舞蹈擔當',
     mbti: 'INTJ', bday: '2007.04.12',
@@ -80,7 +80,7 @@ export const MEMBERS = [
     quoteSource: 'YUHA · 出道採訪',
   },
   {
-    en: 'Stella', kr: '스텔라', zh: '金多現',
+    en: 'Stella', kr: '스텔라', zh: '金多絢',
     fullName: 'Stella Dahyun Kim',
     role: '歌唱擔當',
     mbti: 'ENFP', bday: '2007.06.18',
@@ -108,7 +108,7 @@ export const MEMBERS = [
     quoteSource: 'STELLA · 出道採訪',
   },
   {
-    en: 'Juun', kr: '준', zh: '金柱恩',
+    en: 'Juun', kr: '김주은', zh: '金主恩',
     role: '主舞 · 饒舌擔當 · 歌唱擔當',
     mbti: 'ISFJ', bday: '2008.12.03',
     emoji: '🫧', tone: 'sky',
@@ -134,7 +134,7 @@ export const MEMBERS = [
     quoteSource: 'JUUN · 出道採訪',
   },
   {
-    en: 'A-na', kr: '아나', zh: '盧宥娜',
+    en: 'A-na', kr: '노유나', zh: '魯惟娜',
     role: '饒舌擔當 · 歌唱擔當 · 顏值擔當',
     mbti: 'ESFP', bday: '2008.12.20',
     emoji: '🌙', tone: 'blush',
@@ -160,7 +160,7 @@ export const MEMBERS = [
     quoteSource: 'A-NA · 出道採訪',
   },
   {
-    en: 'Ian', kr: '이안', zh: '鄭李安',
+    en: 'Ian', kr: '정이안', zh: '鄭以安',
     role: '舞蹈擔當 · 歌唱擔當 · 顏值擔當 · Center',
     mbti: 'ENFP', bday: '2009.10.09',
     emoji: '🎸', tone: 'cream',
@@ -186,7 +186,7 @@ export const MEMBERS = [
     quoteSource: 'IAN · 出道採訪',
   },
   {
-    en: 'Ye-on', kr: '예온', zh: '金娜妍',
+    en: 'Ye-on', kr: '김나연', zh: '金奈延',
     role: '歌唱擔當 · 忙內',
     mbti: 'INTJ', bday: '2010.04.19',
     emoji: '🌿', tone: 'sky',

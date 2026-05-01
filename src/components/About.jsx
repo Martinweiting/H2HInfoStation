@@ -1,20 +1,81 @@
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   CalendarDays,
+  ExternalLink,
   Heart,
   Music,
   Radio,
   Sparkles,
   Users,
+  X,
 } from 'lucide-react'
 
 const STATS = [
-  { label: 'MEMBERS', value: '8', detail: 'eight voices', icon: Users },
-  { label: 'DEBUT', value: '2025.02.24', detail: 'with The Chase', icon: CalendarDays },
-  { label: 'LABEL', value: 'SM Entertainment', detail: 'official artist', icon: Music },
-  { label: 'FANDOM', value: 'S2U', detail: 'stars to you', icon: Heart },
-  { label: 'COLOR', value: 'Sky Blue', detail: '#87CEEB', icon: Sparkles },
-  { label: 'SIGNAL', value: 'Connect', detail: 'hearts as one', icon: Radio },
+  {
+    label: 'Accounts',
+    value: '官方帳號',
+    detail: 'social links',
+    icon: Users,
+    title: 'Official Accounts',
+    description: 'Official Hearts2Hearts social media accounts and shop links.',
+    links: [
+      { label: 'Instagram', url: 'https://www.instagram.com/hearts2hearts/' },
+      { label: 'X', url: 'https://x.com/Hearts2Hearts' },
+      { label: 'YouTube', url: 'https://www.youtube.com/@hearts2hearts.official' },
+      { label: 'TikTok', url: 'https://www.tiktok.com/@hearts2hearts' },
+      { label: 'Facebook', url: 'https://www.facebook.com/hearts2heartsH2H/' },
+      { label: 'Weverse', url: 'https://weverse.io/hearts2hearts' },
+      { label: 'Weverse Shop', url: 'https://shop.weverse.io/zh-tw/shop/USD/artists/213' },
+      { label: 'Weibo', url: 'https://weibo.com/7971304015' },
+      { label: 'bilibili', url: 'https://space.bilibili.com/3546824314980440/' },
+      { label: 'Douyin', url: 'https://www.douyin.com/user/MS4wLjABAAAAM7nXa8ubHrjX2RSkcdsZQebBCbV1X-vnPurgQ8t8W584yHjzOtbiArIhr9Qrf8Ot' },
+      { label: 'SMTOWN GLOBAL SHOP', url: 'https://global.shop.smtown.com/collections/hearts2hearts' },
+    ],
+  },
+  {
+    label: 'DEBUT',
+    value: '2025.02.24',
+    detail: 'with The Chase',
+    icon: CalendarDays,
+    title: '出道日',
+    description: '團體於 2025 年 2 月 24 日以首張單曲專輯 The Chase 正式出道，將追逐夢想、彼此連結與青春能量作為初始故事。',
+  },
+  {
+    label: 'LABEL',
+    value: '所屬公司',
+    detail: 'SM Entertainment',
+    icon: Music,
+    title: 'SM Entertainment',
+    description: 'Hearts2Hearts是繼2020年aespa後，時隔五年再度推出女子團體；亦是SM娛樂進入『SM 3.0』時代後推出的首組女子團體。',
+    links: [
+      { label: 'SM Entertainment', url: 'https://www.smentertainment.com/' },
+    ],
+  },
+  {
+    label: 'FANDOM',
+    value: '粉絲名稱',
+    detail: 'S2U',
+    icon: Heart,
+    title: 'S2U',
+    description: '『S2U』（韓語：하츄），讀作『Hearts U』。『S2U』的寓意囊括了：『S2』可看作是愛心的形狀之餘，『S』也代表了團體自身，並再加上代表粉絲的『U』，代表粉絲們將持續陪伴在團體身邊',
+  },
+  {
+    label: 'COLOR',
+    value: 'Sky Blue',
+    detail: '#87CEEB',
+    icon: Sparkles,
+    title: '代表色',
+    description: 'Sky Blue 帶有清澈、開闊與夢幻的感覺，呼應團體年輕、輕盈又帶一點未來感的視覺調性。',
+  },
+  {
+    label: 'SIGNAL',
+    value: 'Connect',
+    detail: 'hearts as one',
+    icon: Radio,
+    title: '團體訊號',
+    description: 'Connect 是團體介紹裡反覆出現的精神：成員、音樂、舞台與粉絲彼此連線，讓八個不同的故事匯成同一段節奏。',
+  },
 ]
 
 const TAGS = ['#S2U', '#하츠투하츠', '#Hearts2Hearts', '#H2H', '#SkyBlue']
@@ -25,6 +86,176 @@ const fadeUp = (i = 0) => ({
   viewport: { once: true, margin: '-60px' },
   transition: { duration: 0.52, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] },
 })
+
+function StatDetailModal({ stat, dark, palette, onClose }) {
+  useEffect(() => {
+    if (!stat) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = prev
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [stat, onClose])
+
+  if (!stat) return null
+
+  const Icon = stat.icon
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        key="stat-backdrop"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: .18 }}
+        onClick={onClose}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 1000,
+          background: dark ? 'rgba(3,8,22,.68)' : 'rgba(10,16,35,.42)',
+          backdropFilter: 'blur(7px)',
+          WebkitBackdropFilter: 'blur(7px)',
+          display: 'grid',
+          placeItems: 'center',
+          padding: 22,
+        }}
+      >
+        <motion.div
+          key="stat-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="stat-detail-heading"
+          initial={{ opacity: 0, y: 18, scale: .96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 12, scale: .98 }}
+          transition={{ type: 'spring', stiffness: 340, damping: 30 }}
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            width: 'min(520px, 100%)',
+            borderRadius: 18,
+            background: dark ? '#15224A' : '#F8FBFF',
+            color: palette.text,
+            border: `0.5px solid ${palette.rule}`,
+            boxShadow: dark ? '0 26px 90px rgba(0,0,0,.42)' : '0 26px 90px rgba(26,43,69,.18)',
+            overflow: 'hidden',
+          }}
+        >
+          <div style={{
+            padding: '22px 24px 20px',
+            background: dark
+              ? 'linear-gradient(140deg, rgba(135,206,235,.18), rgba(255,138,168,.08))'
+              : 'linear-gradient(140deg, rgba(230,244,251,.95), rgba(255,229,236,.75))',
+            borderBottom: `0.5px solid ${palette.rule}`,
+            position: 'relative',
+          }}>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="關閉詳細介紹"
+              style={{
+                position: 'absolute',
+                top: 16,
+                right: 16,
+                width: 34,
+                height: 34,
+                borderRadius: 999,
+                border: 'none',
+                background: dark ? 'rgba(255,255,255,.10)' : 'rgba(26,43,69,.08)',
+                color: palette.text,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <X size={15} />
+            </button>
+            <div style={{
+              width: 44,
+              height: 44,
+              borderRadius: 14,
+              background: dark ? 'rgba(135,206,235,.16)' : 'rgba(255,255,255,.82)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: 16,
+            }}>
+              <Icon size={20} color={palette.accent} />
+            </div>
+            <div className="ff-mono" style={{
+              fontSize: 15,
+              letterSpacing: '.22em',
+              color: palette.textMuted,
+              marginBottom: 8,
+            }}>
+              {stat.label} / {stat.value}
+            </div>
+            <h3 id="stat-detail-heading" className="ff-display" style={{
+              margin: 0,
+              fontStyle: 'italic',
+              fontSize: 34,
+              fontWeight: 500,
+              lineHeight: 1,
+            }}>
+              {stat.title}
+            </h3>
+          </div>
+          <div style={{ padding: '22px 24px 26px' }}>
+            <p style={{
+              margin: 0,
+              fontSize: 18.5,
+              lineHeight: 1.8,
+              color: palette.textSoft,
+            }}>
+              {stat.description}
+            </p>
+            {stat.links?.length > 0 && (
+              <div style={{
+                marginTop: 18,
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
+                gap: 10,
+              }}>
+                {stat.links.map(link => (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: 10,
+                      minHeight: 44,
+                      padding: '10px 12px',
+                      borderRadius: 10,
+                      background: dark ? 'rgba(255,255,255,.07)' : 'rgba(26,43,69,.05)',
+                      border: `0.5px solid ${palette.rule}`,
+                      color: palette.text,
+                      fontSize: 17,
+                      fontWeight: 600,
+                      lineHeight: 1.25,
+                      overflowWrap: 'anywhere',
+                    }}
+                  >
+                    <span>{link.label}</span>
+                    <ExternalLink size={15} color={palette.accent} style={{ flexShrink: 0 }} />
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  )
+}
 
 function OrbitMark({ dark, palette }) {
   const orbit = dark ? 'rgba(255,255,255,.18)' : 'rgba(26,43,69,.10)'
@@ -140,6 +371,8 @@ function OrbitMark({ dark, palette }) {
 }
 
 export function About({ dark }) {
+  const [activeStat, setActiveStat] = useState(null)
+
   const p = dark ? {
     bg: '#0D1A38',
     panel: '#15224A',
@@ -167,6 +400,8 @@ export function About({ dark }) {
   }
 
   return (
+    <>
+    <StatDetailModal stat={activeStat} dark={dark} palette={p} onClose={() => setActiveStat(null)} />
     <section id="about" aria-labelledby="about-heading" style={{
       position: 'relative',
       overflow: 'hidden',
@@ -215,7 +450,7 @@ export function About({ dark }) {
               WebkitBackdropFilter: 'blur(12px)',
             }}>
               <Sparkles size={13} color={p.accent} />
-              ABOUT · 하츠투하츠 · HEARTS2HEARTS
+              團體介紹 · HEARTS2HEARTS
             </div>
 
             <h2 id="about-heading" className="ff-display" style={{
@@ -239,7 +474,7 @@ export function About({ dark }) {
               lineHeight: 1.85,
               color: p.textSoft,
             }}>
-              Hearts2Hearts（韓語：하츠투하츠），簡稱H2H（韓語：하투하），團體名稱寓意著成員們將透過團體自身的音樂，以多樣化的情感及訊息與粉絲互相結合心意共同邁進。
+              Hearts2Hearts 是 SM Entertainment 旗下 8 人女子團體，以「八顆心彼此連結」為核心概念，成員們將透過團體自身的音樂，以多樣化的情感及訊息與粉絲互相結合心意共同邁進。
             </p>
 
             <div style={{ marginTop: 26, display: 'flex', flexWrap: 'wrap', gap: 10 }}>
@@ -279,13 +514,25 @@ export function About({ dark }) {
           {STATS.map((s, i) => {
             const Icon = s.icon
             return (
-              <motion.div key={s.label} {...fadeUp(i)} style={{
+              <motion.button
+                type="button"
+                key={s.label}
+                {...fadeUp(i)}
+                onClick={() => setActiveStat(s)}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: .98 }}
+                style={{
                 minHeight: 148,
                 padding: '22px 20px',
         background: dark ? 'rgba(21,34,74,.92)' : 'rgba(255,255,255,.80)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
+                border: 'none',
+                textAlign: 'left',
+                cursor: 'pointer',
+                fontFamily: 'var(--ff-body)',
+                color: p.text,
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
                   <div style={{
@@ -329,12 +576,13 @@ export function About({ dark }) {
                     {s.detail}
                   </div>
                 </div>
-              </motion.div>
+              </motion.button>
             )
           })}
         </div>
 
       </div>
     </section>
+    </>
   )
 }

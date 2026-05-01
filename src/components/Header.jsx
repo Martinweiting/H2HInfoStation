@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react'
 import { ChevronDown, Heart, Moon, Sun, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MUSIC_MENU_LINKS } from '../data/musicWorks.js'
+import { YouTubeNotifier } from './YouTubeNotifier.jsx'
 
 const NAV_LINKS = [
   { label: '\u6210\u54e1', href: '#members' },
+  { label: '\u5718\u9ad4\u4ecb\u7d39', href: '#about' },
   { label: '\u97f3\u6a02\u4f5c\u54c1', href: '#mv', children: MUSIC_MENU_LINKS },
   { label: '\u6642\u9593\u8ef8', href: '#discography' },
   { label: '\u884c\u7a0b', href: '#schedule' },
@@ -32,8 +34,8 @@ export function Header({ dark, onToggleDark }) {
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 clamp(24px, 4vw, 56px)',
-        height: scrolled ? 60 : 76,
+        padding: '0 clamp(28px, 4vw, 64px)',
+        height: scrolled ? 76 : 96,
         background: bg,
         borderBottom: scrolled ? `0.5px solid ${border}` : 'none',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
@@ -52,7 +54,7 @@ export function Header({ dark, onToggleDark }) {
       </a>
 
       {/* Desktop nav */}
-      <nav aria-label="Main navigation" style={{ display: 'flex', gap: 32, fontSize: 18, fontWeight: 500 }}>
+      <nav aria-label="Main navigation" style={{ display: 'flex', gap: 34, fontSize: 21, fontWeight: 600 }}>
         {NAV_LINKS.map(l => (
           <div key={l.href} className="nav-item" style={{ position: 'relative' }}>
             <a href={l.href} aria-haspopup={l.children ? 'true' : undefined} style={{
@@ -61,13 +63,13 @@ export function Header({ dark, onToggleDark }) {
               padding: '4px 0',
               display: 'inline-flex',
               alignItems: 'center',
-              gap: 5,
+              gap: 6,
             }}
             onMouseEnter={e => e.currentTarget.style.color = dark ? '#F8FAFF' : '#1A2B45'}
             onMouseLeave={e => e.currentTarget.style.color = dark ? 'rgba(248,250,255,.75)' : 'rgba(26,43,69,.65)'}
             >
               {l.label}
-              {l.children && <ChevronDown size={14} strokeWidth={2.2} />}
+              {l.children && <ChevronDown size={17} strokeWidth={2.2} />}
             </a>
             {l.children && (
               <div
@@ -97,6 +99,8 @@ export function Header({ dark, onToggleDark }) {
 
       {/* Right actions */}
       <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
+        <YouTubeNotifier dark={dark} border={border} />
+
         <button
           onClick={onToggleDark}
           aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -110,7 +114,7 @@ export function Header({ dark, onToggleDark }) {
           onMouseEnter={e => { e.currentTarget.style.background = dark ? 'rgba(255,255,255,.1)' : 'rgba(26,43,69,.06)' }}
           onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}
         >
-          {dark ? <Sun size={17} /> : <Moon size={17} />}
+          {dark ? <Sun size={20} /> : <Moon size={20} />}
         </button>
 
         {/* Mobile hamburger */}
@@ -125,7 +129,7 @@ export function Header({ dark, onToggleDark }) {
           }}
           className="mobile-menu-btn"
         >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          {menuOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
@@ -155,11 +159,11 @@ export function Header({ dark, onToggleDark }) {
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                     padding: '10px 0',
                     color: dark ? 'rgba(248,250,255,.8)' : 'rgba(26,43,69,.75)',
-                    fontSize: 19.5, fontWeight: 500,
+                    fontSize: 22, fontWeight: 600,
                   }}
                 >
                   {l.label}
-                  {l.children && <ChevronDown size={15} />}
+                  {l.children && <ChevronDown size={18} />}
                 </a>
                 {l.children && (
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 6, padding: '0 0 12px' }}>
@@ -174,7 +178,7 @@ export function Header({ dark, onToggleDark }) {
                           padding: '8px 10px',
                           background: dark ? 'rgba(255,255,255,.06)' : 'rgba(26,43,69,.05)',
                           color: dark ? 'rgba(248,250,255,.74)' : 'rgba(26,43,69,.68)',
-                          fontSize: 17,
+                          fontSize: 19,
                           overflowWrap: 'anywhere',
                         }}
                       >

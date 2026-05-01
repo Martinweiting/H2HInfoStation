@@ -47,9 +47,9 @@ export default function App() {
       <main style={{ opacity: loaded ? 1 : 0, transition: 'opacity .4s ease .1s' }}>
         <Hero dark={dark} />
         <hr style={{ border: 'none', borderTop: rule }} />
-        <About dark={dark} />
-        <hr style={{ border: 'none', borderTop: rule }} />
         <Members dark={dark} />
+        <hr style={{ border: 'none', borderTop: rule }} />
+        <About dark={dark} />
         <hr style={{ border: 'none', borderTop: rule }} />
         <MusicVideos dark={dark} />
         <hr style={{ border: 'none', borderTop: rule }} />
