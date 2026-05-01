@@ -18,7 +18,7 @@ function CardStyleSwitcher({ value, onChange, dark }) {
   const border = dark ? 'rgba(255,255,255,.16)' : 'rgba(26,43,69,.12)'
 
   return (
-    <div role="group" aria-label="卡片樣式切換" style={{
+    <div className="card-style-switcher" role="group" aria-label="卡片樣式切換" style={{
       display: 'inline-flex', alignItems: 'center', gap: 14,
       padding: '6px 10px 6px 18px', borderRadius: 999,
       background: dark ? 'rgba(255,255,255,.06)' : 'rgba(255,252,247,.92)',
@@ -31,34 +31,37 @@ function CardStyleSwitcher({ value, onChange, dark }) {
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
         <Heart size={13} color="#FF8AA8" fill="#FF8AA8" />
         <span className="ff-display" style={{
-          fontStyle: 'italic', fontSize: 14, fontWeight: 600,
+          fontStyle: 'italic', fontSize: 19, fontWeight: 600,
           color: dark ? '#F8FAFF' : '#1A2B45', whiteSpace: 'nowrap',
         }}>card style</span>
       </span>
 
-      <div style={{
+      <div className="card-style-options" style={{
         position: 'relative', display: 'inline-flex',
         background: dark ? 'rgba(0,0,0,.25)' : '#E6F4FB',
         borderRadius: 999, padding: 3,
       }}>
         {/* Thumb */}
-        <div style={{
+        <div className="card-style-thumb" style={{
           position: 'absolute', top: 3, bottom: 3,
-          left: 3 + idx * 98,
-          width: 98, borderRadius: 999,
+          left: 3,
+          width: 'calc((100% - 6px) / 3)',
+          transform: `translateX(${idx * 100}%)`,
+          borderRadius: 999,
           background: dark ? 'linear-gradient(180deg,#5AB3D9,#3A8FB7)' : 'linear-gradient(180deg,#FFFCF7,#FFF)',
           boxShadow: dark ? '0 2px 6px rgba(90,179,217,.4)' : '0 2px 6px rgba(26,43,69,.15)',
-          transition: 'left .28s cubic-bezier(.34,1.4,.64,1)',
+          transition: 'transform .28s cubic-bezier(.34,1.4,.64,1)',
           pointerEvents: 'none',
         }} aria-hidden="true" />
 
         {CARD_STYLES.map((o, i) => (
           <button key={o.value} onClick={() => onChange(o.value)}
             aria-pressed={i === idx}
+            className="card-style-option"
             style={{
               appearance: 'none', border: 'none', cursor: 'pointer', background: 'transparent',
               position: 'relative', zIndex: 1, width: 98, padding: '7px 0',
-              fontFamily: 'var(--ff-body)', fontSize: 12,
+              fontFamily: 'var(--ff-body)', fontSize: 17,
               fontWeight: i === idx ? 600 : 500,
               color: i === idx
                 ? (dark ? '#0B1530' : '#1A2B45')
@@ -106,7 +109,7 @@ export function Members({ dark }) {
       }}>
         <div>
           <div style={{
-            fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '.24em',
+            fontFamily: 'var(--ff-mono)', fontSize: 16.5, letterSpacing: '.24em',
             color: p.textSoft, marginBottom: 14,
           }}>MEMBERS · 008 · DEBUT 2025.02.24</div>
           <h2 id="members-heading" className="ff-display" style={{
@@ -131,7 +134,7 @@ export function Members({ dark }) {
         display: 'flex', justifyContent: 'center',
       }}>
         <span style={{
-          fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '.22em',
+          fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.22em',
           color: p.textSoft, display: 'flex', alignItems: 'center', gap: 8,
         }}>
           <Heart size={10} color="#FF8AA8" fill="#FF8AA8" />
@@ -139,6 +142,30 @@ export function Members({ dark }) {
           <Heart size={10} color="#FF8AA8" fill="#FF8AA8" />
         </span>
       </div>
+      <style>{`
+        @media (max-width: 620px) {
+          .card-style-switcher {
+            width: 100% !important;
+            align-items: stretch !important;
+            border-radius: 18px !important;
+            flex-direction: column !important;
+            gap: 10px !important;
+            padding: 12px !important;
+          }
+
+          .card-style-options {
+            width: 100% !important;
+            display: flex !important;
+          }
+
+          .card-style-option {
+            flex: 1 1 0 !important;
+            width: auto !important;
+            min-width: 0 !important;
+            padding: 10px 4px !important;
+          }
+        }
+      `}</style>
     </section>
     </>
   )

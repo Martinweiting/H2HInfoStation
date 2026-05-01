@@ -48,18 +48,18 @@ export function MinimalCard({ m, onClick }) {
           <div className="ff-display" style={{ fontStyle: 'italic', fontSize: 22, fontWeight: 500, lineHeight: 1, color: '#1A2B45' }}>
             {m.en}
           </div>
-          <div style={{ fontSize: 10.5, color: 'rgba(26,43,69,.55)', marginTop: 3, letterSpacing: '.06em' }}>
+          <div style={{ fontSize: 16, color: 'rgba(26,43,69,.55)', marginTop: 3, letterSpacing: '.06em' }}>
             {m.kr} · {m.zh === 'Coming Soon' ? '—' : m.zh}
           </div>
         </div>
-        <div style={{ fontSize: 18 }}>{m.emoji}</div>
+        <div style={{ fontSize: 21.5 }}>{m.emoji}</div>
       </div>
 
       <div style={{
         marginTop: 10, paddingTop: 10,
         borderTop: '1px dashed rgba(26,43,69,.18)',
         display: 'flex', justifyContent: 'space-between',
-        fontFamily: 'var(--ff-mono)', fontSize: 9, letterSpacing: '.16em',
+        fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.16em',
         color: 'rgba(26,43,69,.55)',
       }}>
         <span>{m.bday === 'Coming Soon' ? '—' : m.bday}</span>

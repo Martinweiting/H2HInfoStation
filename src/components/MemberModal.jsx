@@ -18,8 +18,8 @@ function StatBadge({ label, value, tone }) {
       padding: '10px 14px', borderRadius: 12,
       background: c.badge, gap: 3, minWidth: 64,
     }}>
-      <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 8.5, letterSpacing: '.2em', color: c.text, opacity: .7 }}>{label}</span>
-      <span style={{ fontSize: 13, fontWeight: 600, color: c.text, lineHeight: 1.2, textAlign: 'center' }}>{value}</span>
+      <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 15, letterSpacing: '.2em', color: c.text, opacity: .7 }}>{label}</span>
+      <span style={{ fontSize: 18, fontWeight: 600, color: c.text, lineHeight: 1.2, textAlign: 'center' }}>{value}</span>
     </div>
   )
 }
@@ -32,8 +32,8 @@ function InfoRow({ icon: Icon, label, value, accent }) {
         <Icon size={13} color={accent} />
       </div>
       <div style={{ flex: 1 }}>
-        <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 9, letterSpacing: '.2em', color: 'rgba(26,43,69,.45)', marginBottom: 2 }}>{label}</div>
-        <div style={{ fontSize: 13, color: '#1A2B45', lineHeight: 1.55 }}>{value}</div>
+        <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.2em', color: 'rgba(26,43,69,.45)', marginBottom: 2 }}>{label}</div>
+        <div style={{ fontSize: 18, color: '#1A2B45', lineHeight: 1.55 }}>{value}</div>
       </div>
     </div>
   )
@@ -144,19 +144,19 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
 
                 {/* Name block */}
                 <div style={{ flex: 1, paddingTop: 4 }}>
-                  <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 9.5, letterSpacing: '.24em', color: 'rgba(26,43,69,.45)', marginBottom: 8 }}>
+                  <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.24em', color: 'rgba(26,43,69,.45)', marginBottom: 8 }}>
                     HEARTS2HEARTS · MEMBER
                   </div>
                   <h2 className="ff-display" style={{ margin: 0, fontStyle: 'italic', fontSize: 34, fontWeight: 500, lineHeight: .95, color: '#1A2B45' }}>
-                    {m.en} <span style={{ fontSize: 24 }}>{m.emoji}</span>
+                    {m.en} <span style={{ fontSize: 25 }}>{m.emoji}</span>
                   </h2>
-                  <div style={{ fontSize: 14, color: 'rgba(26,43,69,.6)', marginTop: 6, lineHeight: 1.3 }}>
+                  <div style={{ fontSize: 19, color: 'rgba(26,43,69,.6)', marginTop: 6, lineHeight: 1.3 }}>
                     {m.zh}（{m.kr}）
-                    {m.fullName && <span style={{ display: 'block', fontSize: 11, marginTop: 2, opacity: .7 }}>{m.fullName}</span>}
-                    {m.englishName && <span style={{ display: 'block', fontSize: 11, marginTop: 2, opacity: .7 }}>英文名：{m.englishName}</span>}
+                    {m.fullName && <span style={{ display: 'block', fontSize: 16.5, marginTop: 2, opacity: .7 }}>{m.fullName}</span>}
+                    {m.englishName && <span style={{ display: 'block', fontSize: 16.5, marginTop: 2, opacity: .7 }}>英文名：{m.englishName}</span>}
                   </div>
                   <div style={{
-                    marginTop: 12, fontSize: 11, color: c.text,
+                    marginTop: 12, fontSize: 16.5, color: c.text,
                     background: c.badge, borderRadius: 6,
                     padding: '5px 10px', display: 'inline-block', lineHeight: 1.4,
                   }}>
@@ -192,17 +192,17 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
               {/* Inspired */}
               {m.inspired && (
                 <div style={{ margin: '16px 0 0', padding: 16, borderRadius: 12, background: c.bg }}>
-                  <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 9, letterSpacing: '.22em', color: 'rgba(26,43,69,.45)', marginBottom: 6 }}>
+                  <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.22em', color: 'rgba(26,43,69,.45)', marginBottom: 6 }}>
                     偶像之路的起點
                   </div>
-                  <p style={{ margin: 0, fontSize: 13, color: '#1A2B45', lineHeight: 1.65 }}>{m.inspired}</p>
+                  <p style={{ margin: 0, fontSize: 18, color: '#1A2B45', lineHeight: 1.65 }}>{m.inspired}</p>
                 </div>
               )}
 
               {/* Trivia */}
               {m.trivia?.length > 0 && (
                 <div style={{ marginTop: 24 }}>
-                  <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 9.5, letterSpacing: '.22em', color: 'rgba(26,43,69,.45)', marginBottom: 12 }}>
+                  <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.22em', color: 'rgba(26,43,69,.45)', marginBottom: 12 }}>
                     ✦ 成員小故事
                   </div>
                   <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -214,14 +214,14 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
                         transition={{ delay: .08 + i * .04, duration: .28 }}
                         style={{
                           display: 'flex', gap: 10, alignItems: 'flex-start',
-                          fontSize: 13, color: '#1A2B45', lineHeight: 1.6,
+                          fontSize: 18, color: '#1A2B45', lineHeight: 1.6,
                         }}
                       >
                         <span style={{
                           flexShrink: 0, width: 18, height: 18, borderRadius: 999,
                           background: c.badge, color: c.text,
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          fontSize: 9, fontWeight: 700, fontFamily: 'var(--ff-mono)', marginTop: 2,
+                          fontSize: 15.5, fontWeight: 700, fontFamily: 'var(--ff-mono)', marginTop: 2,
                         }}>
                           {i + 1}
                         </span>
@@ -238,7 +238,7 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
                   {m.hashtags.map(tag => (
                     <span key={tag} style={{
                       padding: '5px 12px', borderRadius: 999,
-                      background: c.badge, fontSize: 11,
+                      background: c.badge, fontSize: 16.5,
                       color: c.text, letterSpacing: '.05em',
                     }}>{tag}</span>
                   ))}
@@ -253,7 +253,7 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
                 className="ff-display"
                 style={{
                   margin: '28px 0 0', fontStyle: 'italic',
-                  fontSize: 19, fontWeight: 500,
+                  fontSize: 22.5, fontWeight: 500,
                   color: '#1A2B45', lineHeight: 1.55,
                   borderLeft: `3px solid ${c.accent}`,
                   paddingLeft: 16,
@@ -261,7 +261,7 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
               >
                 "{m.quote}"
                 <footer style={{
-                  fontFamily: 'var(--ff-mono)', fontSize: 9.5, fontStyle: 'normal',
+                  fontFamily: 'var(--ff-mono)', fontSize: 15.5, fontStyle: 'normal',
                   letterSpacing: '.22em', color: 'rgba(26,43,69,.45)', marginTop: 8,
                 }}>— {m.quoteSource}</footer>
               </motion.blockquote>

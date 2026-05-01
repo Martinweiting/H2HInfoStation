@@ -54,14 +54,14 @@ export function PolaroidCard({ m, tilt = 0, onClick }) {
         textAlign: 'center',
         fontWeight: 600,
       }}>
-        {m.en} <span style={{ color: '#FF8AA8', fontSize: 22 }}>{m.emoji}</span>
+        {m.en} <span style={{ color: '#FF8AA8', fontSize: 23 }}>{m.emoji}</span>
       </div>
 
       <div style={{
         textAlign: 'center',
         marginTop: 6,
         fontFamily: 'var(--ff-mono)',
-        fontSize: 9.5,
+        fontSize: 15.5,
         letterSpacing: '.22em',
         color: 'rgba(26,43,69,.55)',
       }}>

@@ -64,13 +64,13 @@ export function Schedule({ dark }) {
         padding: 'clamp(40px, 6vw, 72px) clamp(24px, 5vw, 64px) clamp(28px, 4vw, 48px)',
         borderBottom: `0.5px solid ${p.rule}`,
       }}>
-        <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '.24em', color: p.textSoft, marginBottom: 14 }}>
+        <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 16.5, letterSpacing: '.24em', color: p.textSoft, marginBottom: 14 }}>
           EVENTS &amp; SCHEDULE · 2025 – 2026
         </div>
         <h2 id="schedule-heading" className="ff-display" style={{
           margin: 0, fontStyle: 'italic', fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 500, lineHeight: .95,
         }}>HEARTS 2 HOUSE.</h2>
-        <div style={{ fontSize: 14, color: p.textSoft, marginTop: 8, lineHeight: 1.7 }}>
+        <div style={{ fontSize: 19, color: p.textSoft, marginTop: 8, lineHeight: 1.7 }}>
           첫 번째 단독 팬미팅 투어 · 2026.02.21 – 03.28<br />
           韓國 · 北美 · 印尼 · 4場城市巡演
         </div>
@@ -91,12 +91,12 @@ export function Schedule({ dark }) {
                 minWidth: 180, flex: '1 1 180px',
               }}
             >
-              <div style={{ fontSize: 18, marginBottom: 4 }}>{g.flag}</div>
-              <div style={{ fontSize: 13, fontWeight: 600, color: p.text }}>{g.region}</div>
-              <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 9.5, letterSpacing: '.14em', color: p.textSoft, marginTop: 3 }}>
+              <div style={{ fontSize: 21.5, marginBottom: 4 }}>{g.flag}</div>
+              <div style={{ fontSize: 18, fontWeight: 600, color: p.text }}>{g.region}</div>
+              <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.14em', color: p.textSoft, marginTop: 3 }}>
                 {g.dates}
               </div>
-              <div style={{ fontSize: 11, color: p.textSoft, marginTop: 2 }}>{g.venue}</div>
+              <div style={{ fontSize: 16.5, color: p.textSoft, marginTop: 2 }}>{g.venue}</div>
             </motion.div>
           ))}
         </div>
@@ -114,15 +114,15 @@ export function Schedule({ dark }) {
         }}>
           <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 4 }}>
             <h3 className="ff-display" style={{ margin: 0, fontStyle: 'italic', fontSize: 32, fontWeight: 500 }}>Feb 2026</h3>
-            <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '.22em', color: p.textSoft }}>2026 / 02</div>
+            <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 16.5, letterSpacing: '.22em', color: p.textSoft }}>2026 / 02</div>
           </div>
-          <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 9.5, letterSpacing: '.16em', color: p.textSoft, marginBottom: 16 }}>
+          <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.16em', color: p.textSoft, marginBottom: 16 }}>
             HEARTS 2 HOUSE · 首爾場
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 5 }}>
             {DAYS_HEADER.map((d, i) => (
               <div key={i} style={{
-                fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '.18em',
+                fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.18em',
                 color: p.textSoft, textAlign: 'center', paddingBottom: 6,
               }}>{d}</div>
             ))}
@@ -141,7 +141,7 @@ export function Schedule({ dark }) {
                 }}
                   aria-label={has ? `2026.02.${String(d).padStart(2,'0')} 有活動` : undefined}
                 >
-                  <span style={{ fontSize: 13 }}>{d}</span>
+                  <span style={{ fontSize: 18 }}>{d}</span>
                   {has && <Heart size={8} color="#FF8AA8" fill="#FF8AA8" />}
                 </div>
               )
@@ -151,7 +151,7 @@ export function Schedule({ dark }) {
           {/* Feb legend */}
           <div style={{ marginTop: 14, display: 'flex', gap: 8, alignItems: 'center' }}>
             <div style={{ width: 10, height: 10, borderRadius: 3, background: '#FFE5EC', border: '0.5px solid #FF8AA8' }} />
-            <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 9.5, letterSpacing: '.14em', color: p.textSoft }}>
+            <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.14em', color: p.textSoft }}>
               HEARTS 2 HOUSE 演出日
             </span>
           </div>
@@ -160,7 +160,7 @@ export function Schedule({ dark }) {
         {/* Event list */}
         <div style={{ padding: 'clamp(28px, 4vw, 48px) clamp(24px, 4vw, 48px)' }}>
           <h3 className="ff-display" style={{ margin: '0 0 18px', fontStyle: 'italic', fontSize: 32, fontWeight: 500 }}>All Events.</h3>
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, padding: 0, margin: 0 }}>
+          <ul className="schedule-event-list" style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, padding: 0, margin: 0 }}>
             {SCHEDULE.map((s, i) => {
               const mon = getMonthLabel(s.date)
               const day = s.date.slice(-2)
@@ -170,6 +170,7 @@ export function Schedule({ dark }) {
 
               return (
                 <motion.li key={i}
+                  className="schedule-event"
                   initial={{ opacity: 0, x: 16 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -189,27 +190,27 @@ export function Schedule({ dark }) {
                       fontStyle: 'italic', fontSize: 26, fontWeight: 500,
                       lineHeight: 1, color: isPast ? p.textSoft : p.text,
                     }}>{day}</div>
-                    <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 8.5, letterSpacing: '.18em', color: p.textSoft }}>{mon}</div>
-                    <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 8, letterSpacing: '.12em', color: p.textSoft, opacity: .7 }}>{yr}</div>
+                    <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 15, letterSpacing: '.18em', color: p.textSoft }}>{mon}</div>
+                    <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 14.5, letterSpacing: '.12em', color: p.textSoft, opacity: .7 }}>{yr}</div>
                   </div>
 
                   {/* Info col */}
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 600, color: p.text, lineHeight: 1.4 }}>{s.title}</div>
-                    <div style={{ fontSize: 11, color: p.textSoft, marginTop: 3, fontFamily: 'var(--ff-mono)', letterSpacing: '.1em' }}>
+                    <div style={{ fontSize: 18, fontWeight: 600, color: p.text, lineHeight: 1.4 }}>{s.title}</div>
+                    <div style={{ fontSize: 16.5, color: p.textSoft, marginTop: 3, fontFamily: 'var(--ff-mono)', letterSpacing: '.1em' }}>
                       {s.time !== '—' && s.time !== 'TBA' ? `${s.time} · ` : ''}{s.loc}
                     </div>
                     {s.desc && (
-                      <div style={{ fontSize: 11, color: p.textSoft, marginTop: 5, lineHeight: 1.5, opacity: .85 }}>
+                      <div style={{ fontSize: 16.5, color: p.textSoft, marginTop: 5, lineHeight: 1.5, opacity: .85 }}>
                         {s.desc}
                       </div>
                     )}
                   </div>
 
                   {/* Type badge */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4 }}>
+                  <div className="schedule-badges" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4 }}>
                     <span style={{
-                      padding: '3px 9px', borderRadius: 999, fontSize: 9.5, letterSpacing: '.16em',
+                      padding: '3px 9px', borderRadius: 999, fontSize: 15.5, letterSpacing: '.16em',
                       fontFamily: 'var(--ff-mono)',
                       background: dark ? 'rgba(255,255,255,.08)' : '#FFFCF7',
                       border: `0.5px solid ${p.rule}`, color: p.textSoft,
@@ -217,7 +218,7 @@ export function Schedule({ dark }) {
                     }}>{s.type}</span>
                     {isPast && (
                       <span style={{
-                        padding: '2px 8px', borderRadius: 999, fontSize: 8.5, letterSpacing: '.14em',
+                        padding: '2px 8px', borderRadius: 999, fontSize: 15, letterSpacing: '.14em',
                         fontFamily: 'var(--ff-mono)',
                         background: 'transparent',
                         border: `0.5px solid ${p.rule}`, color: p.textSoft,
@@ -231,6 +232,30 @@ export function Schedule({ dark }) {
           </ul>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 520px) {
+          .schedule-event {
+            grid-template-columns: 52px minmax(0, 1fr) !important;
+            gap: 12px !important;
+          }
+
+          .schedule-badges {
+            grid-column: 2 !important;
+            align-items: flex-start !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            margin-top: 2px;
+          }
+
+          .schedule-event * {
+            overflow-wrap: anywhere;
+          }
+
+          .schedule-event-list {
+            overflow: hidden;
+          }
+        }
+      `}</style>
     </section>
   )
 }

@@ -43,7 +43,7 @@ export function MagazineCard({ m, onClick }) {
 
       <div style={{ padding: '14px 14px 16px' }}>
         <div style={{
-          fontFamily: 'var(--ff-mono)', fontSize: 9.5, letterSpacing: '.22em',
+          fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.22em',
           color: 'rgba(26,43,69,.55)', marginBottom: 6,
         }}>
           NO.0{idx + 1} — {m.kr}
@@ -52,10 +52,10 @@ export function MagazineCard({ m, onClick }) {
           {m.en}.
         </div>
         <div style={{ height: 1, background: 'rgba(26,43,69,.12)', margin: '10px 0' }} />
-        <div style={{ fontSize: 11, color: 'rgba(26,43,69,.65)', lineHeight: 1.5 }}>
+        <div style={{ fontSize: 16.5, color: 'rgba(26,43,69,.65)', lineHeight: 1.5 }}>
           {m.role}
           <div style={{
-            marginTop: 4, fontFamily: 'var(--ff-mono)', fontSize: 9.5,
+            marginTop: 4, fontFamily: 'var(--ff-mono)', fontSize: 15.5,
             letterSpacing: '.18em', color: 'rgba(26,43,69,.5)',
           }}>
             {m.bday === 'Coming Soon' ? 'BIRTHDAY · TBD' : m.bday} · MBTI {m.mbti}

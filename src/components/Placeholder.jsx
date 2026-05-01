@@ -23,7 +23,7 @@ export function Placeholder({ label = '', tone = 'sky', ratio, rounded = 8, styl
     >
       <span style={{
         fontFamily: '"JetBrains Mono", monospace',
-        fontSize: 9,
+        fontSize: 15.5,
         letterSpacing: '.2em',
         color: c.text,
         opacity: .5,

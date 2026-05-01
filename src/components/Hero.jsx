@@ -128,20 +128,21 @@ export function Hero({ dark }) {
       </div>
 
       {/* Title block */}
-      <div style={{
+      <div className="hero-title-block" style={{
         position: 'relative', zIndex: 3,
         textAlign: 'center', padding: '0 clamp(24px, 5vw, 80px)',
         marginTop: '-8vh',
       }}>
         {/* Kicker chip */}
         <motion.div
+          className="hero-kicker"
           initial={{ opacity: 0 }} animate={{ opacity: mounted ? 1 : 0 }}
           transition={{ duration: .8, delay: .2 }}
           style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             padding: '6px 16px', borderRadius: 999,
             background: p.chip, border: `0.5px solid ${p.border}`,
-            fontSize: 11, letterSpacing: '.24em', color: p.textSoft, marginBottom: 24,
+            fontSize: 16.5, letterSpacing: '.24em', color: p.textSoft, marginBottom: 24,
             backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
           }}
         >
@@ -164,7 +165,7 @@ export function Hero({ dark }) {
               transition: `opacity .6s ease ${0.05 + i * 0.06}s, transform .8s cubic-bezier(.2,.7,.3,1) ${0.05 + i * 0.06}s`,
             }}>{ch}</span>
           ))}
-          <span style={{
+          <span className="hero-title-heart" style={{
             display: 'inline-block', verticalAlign: 'middle', marginLeft: 18,
             opacity: mounted ? 1 : 0,
             transform: mounted ? 'scale(1)' : 'scale(.5)',
@@ -177,9 +178,24 @@ export function Hero({ dark }) {
 
         {/* Tagline */}
         <motion.p
+          className="hero-tagline"
           initial={{ opacity: 0 }} animate={{ opacity: mounted ? 1 : 0 }}
           transition={{ duration: .9, delay: 1.2 }}
-          style={{ margin: '22px auto 0', maxWidth: 540, fontSize: 15, lineHeight: 1.7, color: p.textSoft }}
+          style={{
+            margin: '22px auto 0',
+            maxWidth: 600,
+            width: 'fit-content',
+            padding: '14px 24px',
+            borderRadius: 8,
+            fontSize: 19.5,
+            lineHeight: 1.7,
+            color: p.textSoft,
+            background: dark ? 'rgba(8, 17, 40, .32)' : 'rgba(255, 255, 255, .46)',
+            border: `0.5px solid ${dark ? 'rgba(255,255,255,.14)' : 'rgba(255,255,255,.62)'}`,
+            boxShadow: dark ? '0 16px 44px rgba(0,0,0,.16)' : '0 16px 44px rgba(90,179,217,.12)',
+            backdropFilter: 'blur(6px) saturate(1.08)',
+            WebkitBackdropFilter: 'blur(6px) saturate(1.08)',
+          }}
         >
           <span className="ff-display" style={{ fontStyle: 'italic', fontSize: 17, color: p.text }}>Connect Hearts, Beat as One</span>
           <br />
@@ -201,7 +217,7 @@ export function Hero({ dark }) {
               appearance: 'none', cursor: 'pointer',
               padding: '13px 22px', borderRadius: 999,
               background: 'transparent', color: p.text,
-              fontSize: 13, fontWeight: 500, letterSpacing: '.04em',
+              fontSize: 18, fontWeight: 500, letterSpacing: '.04em',
               border: `0.5px solid ${p.border}`,
               display: 'inline-flex', alignItems: 'center', gap: 8,
               transition: 'background .2s',
@@ -212,7 +228,7 @@ export function Hero({ dark }) {
             <span style={{
               display: 'inline-flex', width: 22, height: 22, borderRadius: '50%',
               background: p.text, color: dark ? '#0B1530' : '#FFF',
-              alignItems: 'center', justifyContent: 'center', fontSize: 9,
+              alignItems: 'center', justifyContent: 'center', fontSize: 15.5,
             }}>▶</span>
             收聽最新作品
           </button>
@@ -223,6 +239,7 @@ export function Hero({ dark }) {
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: mounted ? 1 : 0 }}
         transition={{ duration: .9, delay: 1.6 }}
+        className="hero-bottom-info"
         style={{
           position: 'absolute', left: 'clamp(24px, 4vw, 56px)', bottom: 36, zIndex: 5,
         }}
@@ -230,7 +247,7 @@ export function Hero({ dark }) {
       >
         {isPast ? (
           <>
-            <div style={{ fontSize: 10, letterSpacing: '.24em', color: p.textSoft, marginBottom: 8, fontFamily: 'var(--ff-mono)' }}>
+            <div style={{ fontSize: 15.5, letterSpacing: '.24em', color: p.textSoft, marginBottom: 8, fontFamily: 'var(--ff-mono)' }}>
               LAST EVENT · COMPLETED
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
@@ -238,34 +255,34 @@ export function Hero({ dark }) {
                 HEARTS 2 HOUSE
               </span>
               <span style={{
-                fontSize: 10, padding: '2px 10px', borderRadius: 999,
+                fontSize: 15.5, padding: '2px 10px', borderRadius: 999,
                 background: dark ? 'rgba(255,138,168,.15)' : '#FFE5EC',
                 color: '#FF8AA8', fontFamily: 'var(--ff-mono)', letterSpacing: '.14em',
               }}>TOUR ENDED</span>
             </div>
-            <div style={{ fontSize: 12, color: p.textSoft, marginTop: 6, fontFamily: 'var(--ff-mono)', letterSpacing: '.1em' }}>
+            <div style={{ fontSize: 17, color: p.textSoft, marginTop: 6, fontFamily: 'var(--ff-mono)', letterSpacing: '.1em' }}>
               2026.02.21 – 03.28 · 韓國 · 美國 · 印尼
             </div>
-            <div style={{ fontSize: 13, color: p.textSoft, marginTop: 8, fontStyle: 'italic' }}>
+            <div style={{ fontSize: 18, color: p.textSoft, marginTop: 8, fontStyle: 'italic' }}>
               感謝 S2U 讓第一次巡演圓滿落幕 🩵
             </div>
           </>
         ) : (
           <>
-            <div style={{ fontSize: 10, letterSpacing: '.24em', color: p.textSoft, marginBottom: 8, fontFamily: 'var(--ff-mono)' }}>
+            <div style={{ fontSize: 15.5, letterSpacing: '.24em', color: p.textSoft, marginBottom: 8, fontFamily: 'var(--ff-mono)' }}>
               NEXT EVENT · COUNTDOWN
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 14 }}>
               <span className="ff-display" style={{ fontStyle: 'italic', fontSize: 'clamp(20px, 2.5vw, 32px)', fontWeight: 500 }}>
                 HEARTS 2 HOUSE
               </span>
-              <span style={{ fontSize: 12, color: p.textSoft }}>Jakarta · Indonesia</span>
+              <span style={{ fontSize: 17, color: p.textSoft }}>Jakarta · Indonesia</span>
             </div>
             <div style={{ display: 'flex', gap: 18, marginTop: 10, fontFamily: 'var(--ff-mono)' }}>
               {[[days, 'DAYS'], [hours, 'HRS'], [mins, 'MIN'], [secs, 'SEC']].map(([n, l]) => (
                 <div key={l}>
-                  <div style={{ fontSize: 'clamp(18px, 2vw, 26px)', fontWeight: 500, color: p.text }}>{n}</div>
-                  <div style={{ fontSize: 9, letterSpacing: '.2em', color: p.textSoft }}>{l}</div>
+                  <div style={{ fontSize: 'clamp(21.5px, 2vw, 26px)', fontWeight: 500, color: p.text }}>{n}</div>
+                  <div style={{ fontSize: 15.5, letterSpacing: '.2em', color: p.textSoft }}>{l}</div>
                 </div>
               ))}
             </div>
@@ -277,9 +294,10 @@ export function Hero({ dark }) {
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: mounted ? 1 : 0 }}
         transition={{ duration: .9, delay: 1.8 }}
+        className="hero-scroll-indicator"
         style={{
           position: 'absolute', right: 'clamp(24px, 4vw, 56px)', bottom: 36, zIndex: 5,
-          fontSize: 11, color: p.textSoft, display: 'flex', alignItems: 'center', gap: 10,
+          fontSize: 16.5, color: p.textSoft, display: 'flex', alignItems: 'center', gap: 10,
         }}
         aria-hidden="true"
       >
@@ -294,6 +312,49 @@ export function Hero({ dark }) {
           }} />
         </span>
       </motion.div>
+      <style>{`
+        @media (max-width: 560px) {
+          .hero-title-block {
+            width: 100%;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            margin-top: -4vh !important;
+          }
+
+          .hero-kicker {
+            max-width: 100%;
+            white-space: normal;
+            justify-content: center;
+            line-height: 1.45;
+          }
+
+          .hero-title-heart {
+            margin-left: 8px !important;
+          }
+
+          .hero-tagline {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 14px 16px !important;
+            overflow-wrap: anywhere;
+          }
+
+          .hero-bottom-info {
+            left: 20px !important;
+            right: 20px !important;
+            bottom: 24px !important;
+            max-width: calc(100% - 40px);
+          }
+
+          .hero-bottom-info > div {
+            flex-wrap: wrap;
+          }
+
+          .hero-scroll-indicator {
+            display: none !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }
@@ -336,7 +397,7 @@ function LetterButton({ dark }) {
       <span style={{ position: 'relative' }}>
         認識成員
         <span className="ff-mono" style={{
-          fontStyle: 'normal', fontSize: 9, letterSpacing: '.24em', color: '#5AB3D9',
+          fontStyle: 'normal', fontSize: 15.5, letterSpacing: '.24em', color: '#5AB3D9',
           display: 'block', marginTop: 1, fontWeight: 500,
         }}>MEET · THE · TEAM</span>
       </span>

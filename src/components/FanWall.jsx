@@ -55,7 +55,7 @@ export function FanWall({ dark }) {
         padding: 'clamp(40px, 6vw, 72px) clamp(24px, 5vw, 64px) clamp(24px, 3vw, 40px)',
         borderBottom: `0.5px solid ${p.rule}`,
       }}>
-        <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '.24em', color: p.textSoft, marginBottom: 14 }}>
+        <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 16.5, letterSpacing: '.24em', color: p.textSoft, marginBottom: 14 }}>
           FAN WALL · {messages.length + 1278} LETTERS · LIVE
         </div>
         <h2 id="fanwall-heading" className="ff-display" style={{
@@ -63,7 +63,7 @@ export function FanWall({ dark }) {
         }}>
           Letters from <span style={{ color: p.accent }}>S2U.</span>
         </h2>
-        <p style={{ maxWidth: 560, fontSize: 14, lineHeight: 1.7, color: p.textSoft, marginTop: 18 }}>
+        <p style={{ maxWidth: 560, fontSize: 19, lineHeight: 1.7, color: p.textSoft, marginTop: 18 }}>
           匿名或具名都行。每一封都是寫給 Hearts2Hearts 的心聲。
         </p>
       </div>
@@ -76,7 +76,7 @@ export function FanWall({ dark }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 32 }}>
           {/* Composer */}
           <div>
-            <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '.22em', color: p.textSoft, marginBottom: 10 }}>
+            <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 16.5, letterSpacing: '.22em', color: p.textSoft, marginBottom: 10 }}>
               ✉ WRITE A LETTER
             </div>
             <div style={{
@@ -92,7 +92,7 @@ export function FanWall({ dark }) {
                 style={{
                   width: '100%', minHeight: 80, resize: 'vertical',
                   background: 'transparent', border: 'none', outline: 'none',
-                  fontFamily: 'var(--ff-script)', fontSize: 20, lineHeight: 1.5,
+                  fontFamily: 'var(--ff-script)', fontSize: 23, lineHeight: 1.5,
                   color: p.text, caretColor: p.accent,
                 }}
               />
@@ -126,7 +126,7 @@ export function FanWall({ dark }) {
                       aria-label="標籤"
                       style={{
                         background: 'transparent', border: 'none', outline: 'none',
-                        fontFamily: 'var(--ff-body)', fontSize: 12, color: p.text,
+                        fontFamily: 'var(--ff-body)', fontSize: 17, color: p.text,
                         width: 90,
                       }}
                     />
@@ -140,7 +140,7 @@ export function FanWall({ dark }) {
 
           {/* Trending */}
           <div>
-            <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '.22em', color: p.textSoft, marginBottom: 10 }}>
+            <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 16.5, letterSpacing: '.22em', color: p.textSoft, marginBottom: 10 }}>
               # TRENDING
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -151,8 +151,8 @@ export function FanWall({ dark }) {
                   background: dark ? 'rgba(255,255,255,.04)' : '#FFFCF7',
                   border: `0.5px solid ${p.rule}`,
                 }}>
-                  <span style={{ fontSize: 13, color: p.text, fontWeight: 500 }}>{tag}</span>
-                  <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '.18em', color: p.textSoft }}>{n}</span>
+                  <span style={{ fontSize: 18, color: p.text, fontWeight: 500 }}>{tag}</span>
+                  <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.18em', color: p.textSoft }}>{n}</span>
                 </li>
               ))}
             </ul>
@@ -195,7 +195,7 @@ export function FanWall({ dark }) {
                 }} />
 
                 <p className="ff-script" style={{
-                  fontSize: 18, lineHeight: 1.55, color: '#1A2B45', minHeight: 80,
+                  fontSize: 21.5, lineHeight: 1.55, color: '#1A2B45', minHeight: 80,
                   margin: 0,
                 }}>
                   {m.msg}
@@ -205,10 +205,10 @@ export function FanWall({ dark }) {
                   display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
                   marginTop: 14, paddingTop: 12, borderTop: '1px dashed rgba(26,43,69,.2)',
                 }}>
-                  <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '.18em', color: 'rgba(26,43,69,.7)' }}>
+                  <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.18em', color: 'rgba(26,43,69,.7)' }}>
                     {m.name}
                   </span>
-                  <span style={{ fontSize: 10, color: '#5AB3D9', fontWeight: 600 }}>{m.tag}</span>
+                  <span style={{ fontSize: 15.5, color: '#5AB3D9', fontWeight: 600 }}>{m.tag}</span>
                 </div>
               </motion.article>
             )

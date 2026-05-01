@@ -38,7 +38,7 @@ export function Gallery({ dark }) {
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
           <div>
             <div style={{
-              fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '.24em',
+              fontFamily: 'var(--ff-mono)', fontSize: 16.5, letterSpacing: '.24em',
               color: p.textSoft, marginBottom: 14,
             }}>GALLERY · 042 PHOTOS · UPDATED 2026.04.28</div>
             <h2 id="gallery-heading" className="ff-display" style={{
@@ -51,7 +51,7 @@ export function Gallery({ dark }) {
           </div>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <Sparkles size={22} color={p.accent} />
-            <span style={{ fontSize: 12, color: p.textSoft }}>點擊照片可開啟 Lightbox（按 Esc 關閉）</span>
+            <span style={{ fontSize: 17, color: p.textSoft }}>點擊照片可開啟 Lightbox（按 Esc 關閉）</span>
           </div>
         </div>
 
@@ -65,13 +65,13 @@ export function Gallery({ dark }) {
                 background: filter === c.v ? p.text : 'transparent',
                 color: filter === c.v ? (dark ? '#0B1530' : '#FFFCF7') : p.text,
                 border: `0.5px solid ${filter === c.v ? p.text : p.rule}`,
-                fontSize: 12, fontWeight: 500, letterSpacing: '.04em',
+                fontSize: 17, fontWeight: 500, letterSpacing: '.04em',
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 transition: 'all .2s',
               }}
             >
               <span>{c.label}</span>
-              <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 9, letterSpacing: '.16em', opacity: .6 }}>
+              <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.16em', opacity: .6 }}>
                 {String(c.n).padStart(2, '0')}
               </span>
             </button>
@@ -81,11 +81,20 @@ export function Gallery({ dark }) {
 
       {/* Masonry */}
       <div style={{ padding: 'clamp(24px, 3vw, 40px) clamp(24px, 5vw, 64px)' }}>
-        <div style={{ columnCount: 'var(--cols, 4)', columnGap: 14 }}>
+        <div className="masonry-grid" style={{ columnCount: 'var(--cols, 4)', columnGap: 14 }}>
           <style>{`
             #gallery .masonry-grid { --cols: 4; }
             @media (max-width: 1024px) { #gallery .masonry-grid { --cols: 3 !important; } }
             @media (max-width: 640px)  { #gallery .masonry-grid { --cols: 2 !important; } }
+            @media (max-width: 420px)  { #gallery .masonry-grid { --cols: 1 !important; } }
+            @media (max-width: 520px) {
+              #gallery [data-gallery-label] {
+                max-width: calc(100% - 20px);
+                white-space: normal;
+                overflow-wrap: anywhere;
+                line-height: 1.35;
+              }
+            }
           `}</style>
           <AnimatePresence>
             {visible.map((tile, i) => (
@@ -113,8 +122,8 @@ export function Gallery({ dark }) {
                     position: 'absolute', left: 10, bottom: 10,
                     padding: '4px 10px', borderRadius: 999,
                     background: 'rgba(255,252,247,.85)', backdropFilter: 'blur(8px)',
-                    fontFamily: 'var(--ff-mono)', fontSize: 9, letterSpacing: '.18em', color: '#1A2B45',
-                  }}>{tile.cat.toUpperCase()}</div>
+                    fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.18em', color: '#1A2B45',
+                  }} data-gallery-label>{tile.cat.toUpperCase()}</div>
                 </div>
               </motion.div>
             ))}

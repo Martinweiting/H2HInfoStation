@@ -56,7 +56,7 @@ export function LoadingScreen({ onDone }) {
             animate={{ opacity: .45 }}
             transition={{ delay: .45, duration: .5 }}
             style={{
-              fontFamily: 'var(--ff-mono)', fontSize: 10,
+              fontFamily: 'var(--ff-mono)', fontSize: 15.5,
               letterSpacing: '.28em', color: '#1A2B45',
             }}
           >

@@ -141,7 +141,7 @@ function OrbitMark({ dark, palette }) {
         <div style={{
           marginTop: 14,
           fontFamily: 'var(--ff-mono)',
-          fontSize: 10,
+          fontSize: 15.5,
           letterSpacing: '.22em',
           color: palette.textSoft,
           whiteSpace: 'nowrap',
@@ -165,7 +165,7 @@ function OrbitMark({ dark, palette }) {
             background: dark ? 'rgba(255,255,255,.06)' : 'rgba(255,255,255,.74)',
             border: `0.5px solid ${palette.rule}`,
             fontFamily: 'var(--ff-mono)',
-            fontSize: 9,
+            fontSize: 15.5,
             letterSpacing: '.16em',
             color: palette.textSoft,
             backdropFilter: 'blur(10px)',
@@ -248,7 +248,7 @@ export function About({ dark }) {
               border: `0.5px solid ${p.rule}`,
               color: p.textSoft,
               fontFamily: 'var(--ff-mono)',
-              fontSize: 10,
+              fontSize: 15.5,
               letterSpacing: '.22em',
               backdropFilter: 'blur(12px)',
               WebkitBackdropFilter: 'blur(12px)',
@@ -274,7 +274,7 @@ export function About({ dark }) {
             <p style={{
               margin: '22px 0 0',
               maxWidth: 670,
-              fontSize: 'clamp(14px, 1.5vw, 17px)',
+              fontSize: 'clamp(19px, 1.5vw, 20.5px)',
               lineHeight: 1.85,
               color: p.textSoft,
             }}>
@@ -291,7 +291,7 @@ export function About({ dark }) {
                   border: `0.5px solid ${p.rule}`,
                   color: tag === '#SkyBlue' ? p.accentDeep : p.text,
                   fontFamily: 'var(--ff-mono)',
-                  fontSize: 10,
+                  fontSize: 15.5,
                   letterSpacing: '.12em',
                 }}>
                   {tag}
@@ -330,7 +330,7 @@ export function About({ dark }) {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
                   <div style={{
                     fontFamily: 'var(--ff-mono)',
-                    fontSize: 9,
+                    fontSize: 15.5,
                     letterSpacing: '.22em',
                     color: p.textMuted,
                   }}>
@@ -362,7 +362,7 @@ export function About({ dark }) {
                   </div>
                   <div style={{
                     marginTop: 6,
-                    fontSize: 12,
+                    fontSize: 17,
                     color: p.textSoft,
                     letterSpacing: '.02em',
                   }}>
@@ -406,7 +406,7 @@ export function About({ dark }) {
               position: 'relative',
               zIndex: 1,
               fontFamily: 'var(--ff-mono)',
-              fontSize: 10,
+              fontSize: 15.5,
               letterSpacing: '.24em',
               color: p.textMuted,
               marginBottom: 18,
@@ -431,7 +431,7 @@ export function About({ dark }) {
               zIndex: 1,
               margin: '20px 0 0',
               maxWidth: 670,
-              fontSize: 14,
+              fontSize: 19,
               lineHeight: 1.85,
               color: p.textSoft,
             }}>
@@ -455,7 +455,7 @@ export function About({ dark }) {
                   border: `0.5px solid ${p.rule}`,
                   color: p.textSoft,
                   fontFamily: 'var(--ff-mono)',
-                  fontSize: 10,
+                  fontSize: 15.5,
                   letterSpacing: '.13em',
                 }}>
                   {item}
@@ -483,7 +483,7 @@ export function About({ dark }) {
                 gap: 8,
                 color: p.accent,
                 fontFamily: 'var(--ff-mono)',
-                fontSize: 10,
+                fontSize: 15.5,
                 letterSpacing: '.22em',
               }}>
                 <Heart size={14} fill={p.blush} color={p.blush} />
@@ -499,7 +499,7 @@ export function About({ dark }) {
               }}>
                 S2U
               </div>
-              <p style={{ margin: '18px 0 0', fontSize: 13, lineHeight: 1.8, color: p.textSoft }}>
+              <p style={{ margin: '18px 0 0', fontSize: 18, lineHeight: 1.8, color: p.textSoft }}>
                 S2U 承接「Stars to You」的意象，像把每位粉絲的光點送回舞台中央。這裡把粉絲名稱做成主要節點，
                 讓 ABOUT 區塊同時是團體介紹，也是給 S2U 的入口。
               </p>
@@ -519,7 +519,7 @@ export function About({ dark }) {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 gap: 12,
-                fontSize: 12,
+                fontSize: 17,
                 fontWeight: 650,
                 letterSpacing: '.06em',
               }}
@@ -560,7 +560,7 @@ export function About({ dark }) {
                 </div>
                 <div style={{
                   fontFamily: 'var(--ff-mono)',
-                  fontSize: 9,
+                  fontSize: 15.5,
                   letterSpacing: '.22em',
                   color: p.textMuted,
                   marginBottom: 10,
@@ -569,14 +569,14 @@ export function About({ dark }) {
                 </div>
                 <h3 style={{
                   margin: 0,
-                  fontSize: 18,
+                  fontSize: 21.5,
                   lineHeight: 1.45,
                   color: p.text,
                   fontWeight: 700,
                 }}>
                   {card.title}
                 </h3>
-                <p style={{ margin: '12px 0 0', fontSize: 13, lineHeight: 1.8, color: p.textSoft }}>
+                <p style={{ margin: '12px 0 0', fontSize: 18, lineHeight: 1.8, color: p.textSoft }}>
                   {card.body}
                 </p>
               </motion.article>
@@ -602,7 +602,7 @@ export function About({ dark }) {
             <div>
               <div style={{
                 fontFamily: 'var(--ff-mono)',
-                fontSize: 10,
+                fontSize: 15.5,
                 letterSpacing: '.24em',
                 color: p.textMuted,
                 marginBottom: 10,
@@ -624,7 +624,7 @@ export function About({ dark }) {
               alignItems: 'center',
               gap: 9,
               color: p.textSoft,
-              fontSize: 12,
+              fontSize: 17,
               letterSpacing: '.04em',
             }}>
               <Disc3 size={15} color={p.accent} />
@@ -665,16 +665,16 @@ export function About({ dark }) {
                     color: s.accent,
                     boxShadow: dark ? 'none' : '0 8px 22px rgba(26,43,69,.08)',
                     fontWeight: 800,
-                    fontSize: 19,
+                    fontSize: 22.5,
                   }}>
                     {Icon ? <Icon size={18} color={s.accent} /> : s.mark}
                   </div>
                   <div style={{ minWidth: 0 }}>
-                    <div style={{ fontSize: 13, fontWeight: 750, color: p.text }}>{s.name}</div>
+                    <div style={{ fontSize: 18, fontWeight: 750, color: p.text }}>{s.name}</div>
                     <div style={{
                       marginTop: 3,
                       fontFamily: 'var(--ff-mono)',
-                      fontSize: 10,
+                      fontSize: 15.5,
                       letterSpacing: '.07em',
                       color: p.textSoft,
                       overflow: 'hidden',
