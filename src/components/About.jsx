@@ -239,8 +239,7 @@ export function About({ dark }) {
               lineHeight: 1.85,
               color: p.textSoft,
             }}>
-              Hearts2Hearts 是 SM Entertainment 於 2025 年推出的八人女團。這個區塊重新整理為一張更現代的品牌名片：
-              保留網站原有的天空藍、奶油紙感與細緻線條，同時用更乾淨的資訊層級呈現團體定位、粉絲連結與官方入口。
+              Hearts2Hearts（韓語：하츠투하츠），簡稱H2H（韓語：하투하），團體名稱寓意著成員們將透過團體自身的音樂，以多樣化的情感及訊息與粉絲互相結合心意共同邁進。
             </p>
 
             <div style={{ marginTop: 26, display: 'flex', flexWrap: 'wrap', gap: 10 }}>
