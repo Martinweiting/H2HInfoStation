@@ -5,7 +5,7 @@ export function Footer({ dark }) {
     bg: '#0B1530', border: 'rgba(255,255,255,.1)', text: '#F8FAFF',
     textSoft: 'rgba(248,250,255,.45)',
   } : {
-    bg: '#FAF6F0', border: 'rgba(26,43,69,.1)', text: '#1A2B45',
+    bg: 'linear-gradient(180deg, #EFF8FF 0%, #F8F2FF 100%)', border: 'rgba(26,43,69,.1)', text: '#1A2B45',
     textSoft: 'rgba(26,43,69,.45)',
   }
 

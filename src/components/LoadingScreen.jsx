@@ -20,7 +20,7 @@ export function LoadingScreen({ onDone }) {
           transition={{ duration: .55, ease: 'easeInOut' }}
           style={{
             position: 'fixed', inset: 0, zIndex: 9999,
-            background: '#FFFCF7',
+        background: 'linear-gradient(180deg, #EEF8FF 0%, #FFF4FA 52%, #F4FBFF 100%)',
             display: 'flex', flexDirection: 'column',
             alignItems: 'center', justifyContent: 'center',
             gap: 20,

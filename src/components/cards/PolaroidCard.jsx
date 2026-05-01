@@ -13,7 +13,7 @@ export function PolaroidCard({ m, tilt = 0, onClick }) {
       onClick={onClick}
       style={{
         width: '100%',
-        background: '#FFFCF7',
+        background: 'rgba(255,255,255,.84)',
         padding: '14px 14px 18px',
         boxShadow: hovered
           ? '0 22px 40px rgba(26,43,69,.28)'

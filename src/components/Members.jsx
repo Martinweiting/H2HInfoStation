@@ -21,7 +21,7 @@ function CardStyleSwitcher({ value, onChange, dark }) {
     <div className="card-style-switcher" role="group" aria-label="卡片樣式切換" style={{
       display: 'inline-flex', alignItems: 'center', gap: 14,
       padding: '6px 10px 6px 18px', borderRadius: 999,
-      background: dark ? 'rgba(255,255,255,.06)' : 'rgba(255,252,247,.92)',
+      background: dark ? 'rgba(255,255,255,.06)' : 'rgba(255,255,255,.82)',
       border: `0.5px solid ${border}`,
       boxShadow: dark
         ? '0 8px 22px rgba(0,0,0,.35)'
@@ -48,7 +48,7 @@ function CardStyleSwitcher({ value, onChange, dark }) {
           width: 'calc((100% - 6px) / 3)',
           transform: `translateX(${idx * 100}%)`,
           borderRadius: 999,
-          background: dark ? 'linear-gradient(180deg,#5AB3D9,#3A8FB7)' : 'linear-gradient(180deg,#FFFCF7,#FFF)',
+          background: dark ? 'linear-gradient(180deg,#5AB3D9,#3A8FB7)' : 'linear-gradient(180deg,#F4FBFF,#FFFFFF)',
           boxShadow: dark ? '0 2px 6px rgba(90,179,217,.4)' : '0 2px 6px rgba(26,43,69,.15)',
           transition: 'transform .28s cubic-bezier(.34,1.4,.64,1)',
           pointerEvents: 'none',
@@ -91,7 +91,7 @@ export function Members({ dark }) {
     bg: '#0B1530', panel: '#15224A', text: '#F8FAFF', textSoft: 'rgba(248,250,255,.62)',
     rule: 'rgba(255,255,255,.16)', accent: '#87CEEB',
   } : {
-    bg: '#FFFCF7', panel: '#FAF6F0', text: '#1A2B45', textSoft: 'rgba(26,43,69,.55)',
+    bg: 'linear-gradient(180deg, #EFF8FF 0%, #FFF3FA 52%, #F4FBFF 100%)', panel: 'rgba(255,255,255,.72)', text: '#1A2B45', textSoft: 'rgba(26,43,69,.58)',
     rule: 'rgba(26,43,69,.10)', accent: '#5AB3D9',
   }
 

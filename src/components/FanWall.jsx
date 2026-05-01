@@ -6,7 +6,7 @@ import { FAN_MESSAGES } from '../data/index.js'
 const NOTE_COLORS = {
   sky:   { bg: '#E6F4FB', tape: '#5AB3D9' },
   blush: { bg: '#FFE5EC', tape: '#FF8AA8' },
-  cream: { bg: '#FFF4D6', tape: '#E0B860' },
+  cream: { bg: '#F5F0FF', tape: '#9EA7FF' },
 }
 
 const TRENDING = [
@@ -29,7 +29,7 @@ export function FanWall({ dark }) {
     bg: '#0B1530', panel: '#15224A', text: '#F8FAFF', textSoft: 'rgba(248,250,255,.62)',
     rule: 'rgba(255,255,255,.16)', accent: '#87CEEB',
   } : {
-    bg: '#FFFCF7', panel: '#FAF6F0', text: '#1A2B45', textSoft: 'rgba(26,43,69,.55)',
+    bg: 'linear-gradient(180deg, #F3FAFF 0%, #FFF4FA 50%, #F4F2FF 100%)', panel: 'rgba(255,255,255,.68)', text: '#1A2B45', textSoft: 'rgba(26,43,69,.58)',
     rule: 'rgba(26,43,69,.10)', accent: '#5AB3D9',
   }
 
@@ -80,7 +80,7 @@ export function FanWall({ dark }) {
               ✉ WRITE A LETTER
             </div>
             <div style={{
-              background: dark ? 'rgba(255,255,255,.06)' : '#FFFCF7',
+              background: dark ? 'rgba(255,255,255,.06)' : 'rgba(255,255,255,.76)',
               border: `0.5px solid ${p.rule}`, borderRadius: 12, padding: 18,
             }}>
               <textarea
@@ -148,7 +148,7 @@ export function FanWall({ dark }) {
                 <li key={tag} style={{
                   display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
                   padding: '8px 14px', borderRadius: 8,
-                  background: dark ? 'rgba(255,255,255,.04)' : '#FFFCF7',
+                    background: dark ? 'rgba(255,255,255,.04)' : 'rgba(255,255,255,.72)',
                   border: `0.5px solid ${p.rule}`,
                 }}>
                   <span style={{ fontSize: 18, color: p.text, fontWeight: 500 }}>{tag}</span>
@@ -231,7 +231,7 @@ function PostButton({ onClick, dark }) {
       style={{
         appearance: 'none', border: 'none', cursor: 'pointer', position: 'relative',
         padding: '10px 22px 10px 42px',
-        background: dark ? '#F8FAFF' : '#FFFCF7', color: '#1A2B45',
+                  background: dark ? '#F8FAFF' : '#F8FBFF', color: '#1A2B45',
         fontFamily: 'var(--ff-display)', fontStyle: 'italic', fontWeight: 600, fontSize: 14,
         boxShadow: hovered
           ? `4px 4px 0 0 ${shadow}`

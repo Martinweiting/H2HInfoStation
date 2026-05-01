@@ -44,7 +44,7 @@ export function Schedule({ dark }) {
     rule: 'rgba(255,255,255,.16)', accent: '#87CEEB', chip: 'rgba(255,255,255,.06)',
     pastChip: 'rgba(255,255,255,.03)',
   } : {
-    bg: '#FFFCF7', panel: '#FAF6F0', text: '#1A2B45', textSoft: 'rgba(26,43,69,.55)',
+    bg: 'linear-gradient(180deg, #EEF8FF 0%, #F9F4FF 48%, #FFF5FB 100%)', panel: 'rgba(255,255,255,.72)', text: '#1A2B45', textSoft: 'rgba(26,43,69,.58)',
     rule: 'rgba(26,43,69,.10)', accent: '#5AB3D9', chip: 'rgba(26,43,69,.04)',
     pastChip: 'rgba(26,43,69,.02)',
   }
@@ -52,7 +52,7 @@ export function Schedule({ dark }) {
   const TYPE_COLOR = {
     SHOWCASE:   dark ? 'rgba(135,206,235,.18)' : '#E6F4FB',
     FANMEETING: dark ? 'rgba(255,138,168,.12)' : '#FFE5EC',
-    BROADCAST:  dark ? 'rgba(255,255,255,.06)' : '#FAF6F0',
+    BROADCAST:  dark ? 'rgba(255,255,255,.06)' : '#F5FBFF',
   }
 
   return (
@@ -212,7 +212,7 @@ export function Schedule({ dark }) {
                     <span style={{
                       padding: '3px 9px', borderRadius: 999, fontSize: 15.5, letterSpacing: '.16em',
                       fontFamily: 'var(--ff-mono)',
-                      background: dark ? 'rgba(255,255,255,.08)' : '#FFFCF7',
+                  background: dark ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,.74)',
                       border: `0.5px solid ${p.rule}`, color: p.textSoft,
                       whiteSpace: 'nowrap',
                     }}>{s.type}</span>

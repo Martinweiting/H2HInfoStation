@@ -94,7 +94,7 @@ export function Hero({ dark }) {
           position: 'absolute', inset: 0,
           background: dark
             ? 'linear-gradient(180deg, rgba(11,21,48,.34) 0%, rgba(21,34,74,.18) 46%, rgba(31,46,94,.5) 100%)'
-            : 'linear-gradient(180deg, rgba(230,244,251,.2) 0%, rgba(255,252,247,.08) 46%, rgba(255,242,246,.34) 100%)',
+        : 'linear-gradient(180deg, rgba(230,244,251,.28) 0%, rgba(248,252,255,.18) 46%, rgba(255,242,246,.34) 100%)',
         }} />
         <div style={{
           position: 'absolute', inset: 0,
@@ -372,7 +372,7 @@ function LetterButton({ dark }) {
       style={{
         appearance: 'none', border: 'none', cursor: 'pointer', position: 'relative',
         padding: '16px 30px 16px 56px',
-        background: dark ? '#F8FAFF' : '#FFFCF7', color: '#1A2B45',
+                    background: dark ? '#F8FAFF' : '#F8FBFF', color: '#1A2B45',
         fontFamily: 'var(--ff-display)', fontStyle: 'italic', fontWeight: 600, fontSize: 16,
         boxShadow: hovered
           ? `6px 7px 0 0 ${shadow}, 0 18px 38px rgba(26,43,69,.28)`

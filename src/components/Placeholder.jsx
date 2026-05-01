@@ -1,7 +1,7 @@
 const TONE_COLORS = {
   sky:   { bg: 'linear-gradient(145deg, #BFE3F2 0%, #87CEEB 100%)', text: '#1A2B45' },
   blush: { bg: 'linear-gradient(145deg, #FFE5EC 0%, #FFC8D6 100%)', text: '#1A2B45' },
-  cream: { bg: 'linear-gradient(145deg, #FAF6F0 0%, #F0E8DC 100%)', text: '#1A2B45' },
+  cream: { bg: 'linear-gradient(145deg, #F5F0FF 0%, #EAF5FF 100%)', text: '#1A2B45' },
   night: { bg: 'linear-gradient(145deg, #15224A 0%, #0B1530 100%)', text: 'rgba(248,250,255,.55)' },
 }
 

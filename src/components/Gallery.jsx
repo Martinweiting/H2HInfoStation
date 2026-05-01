@@ -20,7 +20,7 @@ export function Gallery({ dark }) {
     bg: '#0B1530', text: '#F8FAFF', textSoft: 'rgba(248,250,255,.62)',
     rule: 'rgba(255,255,255,.16)', accent: '#87CEEB',
   } : {
-    bg: '#FFFCF7', text: '#1A2B45', textSoft: 'rgba(26,43,69,.55)',
+    bg: 'linear-gradient(180deg, #F2FAFF 0%, #FFF4FA 54%, #F2F7FF 100%)', text: '#1A2B45', textSoft: 'rgba(26,43,69,.58)',
     rule: 'rgba(26,43,69,.10)', accent: '#5AB3D9',
   }
 
@@ -63,7 +63,7 @@ export function Gallery({ dark }) {
               style={{
                 appearance: 'none', cursor: 'pointer', padding: '8px 16px', borderRadius: 999,
                 background: filter === c.v ? p.text : 'transparent',
-                color: filter === c.v ? (dark ? '#0B1530' : '#FFFCF7') : p.text,
+                color: filter === c.v ? (dark ? '#0B1530' : '#F8FBFF') : p.text,
                 border: `0.5px solid ${filter === c.v ? p.text : p.rule}`,
                 fontSize: 17, fontWeight: 500, letterSpacing: '.04em',
                 display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -121,7 +121,7 @@ export function Gallery({ dark }) {
                   <div style={{
                     position: 'absolute', left: 10, bottom: 10,
                     padding: '4px 10px', borderRadius: 999,
-                    background: 'rgba(255,252,247,.85)', backdropFilter: 'blur(8px)',
+                    background: 'rgba(255,255,255,.78)', backdropFilter: 'blur(8px)',
                     fontFamily: 'var(--ff-mono)', fontSize: 15.5, letterSpacing: '.18em', color: '#1A2B45',
                   }} data-gallery-label>{tile.cat.toUpperCase()}</div>
                 </div>

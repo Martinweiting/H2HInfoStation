@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Placeholder } from '../Placeholder.jsx'
 import { getMemberPhoto } from '../../data/memberPhotos.js'
 
-const TONES = { sky: '#E6F4FB', blush: '#FFE5EC', cream: '#FAF6F0' }
+const TONES = { sky: '#E6F4FB', blush: '#FFE5EC', cream: '#F5F0FF' }
 
 export function MinimalCard({ m, onClick }) {
   const [hovered, setHovered] = useState(false)

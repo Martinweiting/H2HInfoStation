@@ -15,9 +15,9 @@
   --sky-soft: #BFE3F2;
   --sky-mist: #E6F4FB;
 
-  /* Cream */
-  --cream: #FFFCF7;
-  --pearl: #FAF6F0;
+  /* Dream */
+  --cream: #F3FAFF;
+  --pearl: #F8F3FF;
 
   /* Blush */
   --blush: #FFE5EC;
@@ -53,7 +53,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--ff-body);
-  background: var(--cream);
+  background: linear-gradient(180deg, #EEF8FF 0%, #FFF4FA 48%, #F4FBFF 100%);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -61,7 +61,7 @@ body {
 }
 
 body.dark {
-  background: var(--night);
+  background: linear-gradient(180deg, #071229 0%, #101D45 50%, #17204A 100%);
   color: #F8FAFF;
 }
 

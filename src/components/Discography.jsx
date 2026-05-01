@@ -9,7 +9,7 @@ export function Discography({ dark }) {
     bg: '#0B1530', panel: '#15224A', text: '#F8FAFF', textSoft: 'rgba(248,250,255,.62)',
     rule: 'rgba(255,255,255,.16)', accent: '#87CEEB',
   } : {
-    bg: '#FFFCF7', panel: '#FAF6F0', text: '#1A2B45', textSoft: 'rgba(26,43,69,.55)',
+    bg: 'linear-gradient(180deg, #F4FBFF 0%, #FFF3FA 50%, #EEF8FF 100%)', panel: 'rgba(255,255,255,.72)', text: '#1A2B45', textSoft: 'rgba(26,43,69,.58)',
     rule: 'rgba(26,43,69,.10)', accent: '#5AB3D9',
   }
 

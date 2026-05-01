@@ -7,7 +7,7 @@ import { getMemberPhoto } from '../data/memberPhotos.js'
 const TONE_COLORS = {
   sky:   { bg: '#E6F4FB', accent: '#5AB3D9', badge: '#C8E8F5', text: '#1A4A6B' },
   blush: { bg: '#FFE5EC', accent: '#FF8AA8', badge: '#FFD0DC', text: '#6B1A2E' },
-  cream: { bg: '#FAF6F0', accent: '#C4975A', badge: '#EDE0CC', text: '#4A3520' },
+  cream: { bg: '#F5F0FF', accent: '#8EA8FF', badge: '#E8ECFF', text: '#25365F' },
 }
 
 function StatBadge({ label, value, tone }) {
@@ -86,7 +86,7 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
             style={{
               position: 'fixed', top: 0, right: 0, bottom: 0, zIndex: 1001,
               width: 'min(560px, 100vw)',
-              background: '#FFFCF7',
+        background: '#F8FBFF',
               overflowY: 'auto',
               boxShadow: '-20px 0 60px rgba(10,16,35,.22)',
               display: 'flex', flexDirection: 'column',
@@ -95,7 +95,7 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
           >
             {/* Hero band */}
             <div style={{
-              background: `linear-gradient(160deg, ${c.bg} 0%, #FFFCF7 100%)`,
+              background: `linear-gradient(160deg, ${c.bg} 0%, #F8FBFF 100%)`,
               padding: '36px 28px 24px',
               borderBottom: '1px solid rgba(26,43,69,.08)',
               position: 'relative',

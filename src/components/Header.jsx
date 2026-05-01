@@ -25,7 +25,7 @@ export function Header({ dark, onToggleDark }) {
   const border = dark ? 'rgba(255,255,255,.1)' : 'rgba(26,43,69,.08)'
   const bg = dark
     ? scrolled ? 'rgba(11,21,48,.92)' : 'transparent'
-    : scrolled ? 'rgba(255,252,247,.92)' : 'transparent'
+          : scrolled ? 'rgba(248,252,255,.88)' : 'transparent'
 
   return (
     <header
@@ -73,7 +73,7 @@ export function Header({ dark, onToggleDark }) {
               <div
                 className="nav-child-menu"
                 style={{
-                  background: dark ? 'rgba(11,21,48,.96)' : 'rgba(255,252,247,.96)',
+                  background: dark ? 'rgba(11,21,48,.96)' : 'rgba(248,252,255,.96)',
                   border: `0.5px solid ${border}`,
                   boxShadow: dark ? '0 18px 36px rgba(0,0,0,.32)' : '0 18px 36px rgba(26,43,69,.12)',
                 }}
@@ -139,7 +139,7 @@ export function Header({ dark, onToggleDark }) {
             transition={{ duration: .22 }}
             style={{
               position: 'absolute', top: '100%', left: 0, right: 0,
-              background: dark ? 'rgba(11,21,48,.96)' : 'rgba(255,252,247,.96)',
+        background: dark ? 'rgba(11,21,48,.96)' : 'rgba(248,252,255,.96)',
               backdropFilter: 'blur(16px)',
               borderBottom: `0.5px solid ${border}`,
               padding: '16px 24px',

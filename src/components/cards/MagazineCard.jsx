@@ -15,7 +15,7 @@ export function MagazineCard({ m, onClick }) {
       onClick={onClick}
       style={{
         width: '100%',
-        background: '#FFFCF7',
+        background: 'rgba(255,255,255,.78)',
         border: '.5px solid rgba(26,43,69,.12)',
         cursor: 'pointer',
         boxShadow: hovered ? '0 18px 40px rgba(26,43,69,.18)' : 'none',
