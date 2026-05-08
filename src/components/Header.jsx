@@ -5,18 +5,26 @@ import { MUSIC_MENU_LINKS } from '../data/musicWorks.js'
 import { YouTubeNotifier } from './YouTubeNotifier.jsx'
 
 const NAV_LINKS = [
-  { label: '\u6210\u54e1', href: '#members' },
   { label: '\u5718\u9ad4\u4ecb\u7d39', href: '#about' },
+  { label: '\u6210\u54e1', href: '#members' },
   { label: '\u97f3\u6a02\u4f5c\u54c1', href: '#mv', children: MUSIC_MENU_LINKS },
-  { label: '\u6642\u9593\u8ef8', href: '#discography' },
-  { label: '\u884c\u7a0b', href: '#schedule' },
-  { label: '\u7167\u7247', href: '#gallery' },
-  { label: 'Fan Wall', href: '#fanwall' },
+  { label: '\u7ad9\u5b50\u8490\u96c6', href: '#fan-sites' },
+  {
+    label: '\u63a2\u7d22\u66f4\u591a',
+    href: '#discography',
+    children: [
+      { label: '\u6642\u9593\u8ef8', href: '#discography' },
+      { label: '\u884c\u7a0b', href: '#schedule' },
+      { label: '\u7167\u7247', href: '#gallery' },
+      { label: 'Fan Wall', href: '#fanwall' },
+    ],
+  },
 ]
 
 export function Header({ dark, onToggleDark }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -28,6 +36,17 @@ export function Header({ dark, onToggleDark }) {
   const bg = dark
     ? scrolled ? 'rgba(11,21,48,.92)' : 'transparent'
           : scrolled ? 'rgba(248,252,255,.88)' : 'transparent'
+
+  const handleTopNavClick = (event, item) => {
+    if (!item.children) return
+    event.preventDefault()
+    setOpenDropdown(current => current === item.href ? null : item.href)
+  }
+
+  const closeMenus = () => {
+    setMenuOpen(false)
+    setOpenDropdown(null)
+  }
 
   return (
     <header
@@ -54,10 +73,14 @@ export function Header({ dark, onToggleDark }) {
       </a>
 
       {/* Desktop nav */}
-      <nav aria-label="Main navigation" style={{ display: 'flex', gap: 34, fontSize: 21, fontWeight: 600 }}>
+      <nav aria-label="Main navigation" style={{ display: 'flex', gap: 'clamp(16px, 1.8vw, 30px)', fontSize: 'clamp(18px, 1.15vw, 21px)', fontWeight: 600 }}>
         {NAV_LINKS.map(l => (
-          <div key={l.href} className="nav-item" style={{ position: 'relative' }}>
-            <a href={l.href} aria-haspopup={l.children ? 'true' : undefined} style={{
+          <div key={l.href} className={`nav-item ${openDropdown === l.href ? 'nav-item--open' : ''}`} style={{ position: 'relative' }}>
+            <a href={l.href}
+            aria-haspopup={l.children ? 'true' : undefined}
+            aria-expanded={l.children ? openDropdown === l.href : undefined}
+            onClick={e => handleTopNavClick(e, l)}
+            style={{
               color: dark ? 'rgba(248,250,255,.75)' : 'rgba(26,43,69,.65)',
               transition: 'color .2s',
               padding: '4px 0',
@@ -84,6 +107,7 @@ export function Header({ dark, onToggleDark }) {
                   <a
                     key={child.href}
                     href={child.href}
+                    onClick={() => setOpenDropdown(null)}
                     style={{
                       color: dark ? 'rgba(248,250,255,.78)' : 'rgba(26,43,69,.72)',
                     }}
@@ -154,7 +178,15 @@ export function Header({ dark, onToggleDark }) {
             {NAV_LINKS.map(l => (
               <div key={l.href} style={{ borderBottom: `0.5px solid ${border}` }}>
                 <a href={l.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={e => {
+                    if (l.children) {
+                      handleTopNavClick(e, l)
+                    } else {
+                      closeMenus()
+                    }
+                  }}
+                  aria-haspopup={l.children ? 'true' : undefined}
+                  aria-expanded={l.children ? openDropdown === l.href : undefined}
                   style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                     padding: '10px 0',
@@ -165,13 +197,13 @@ export function Header({ dark, onToggleDark }) {
                   {l.label}
                   {l.children && <ChevronDown size={18} />}
                 </a>
-                {l.children && (
+                {l.children && openDropdown === l.href && (
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 6, padding: '0 0 12px' }}>
                     {l.children.map(child => (
                       <a
                         key={child.href}
                         href={child.href}
-                        onClick={() => setMenuOpen(false)}
+                        onClick={closeMenus}
                         style={{
                           display: 'block',
                           borderRadius: 8,
@@ -232,7 +264,8 @@ export function Header({ dark, onToggleDark }) {
         }
 
         .nav-item:hover .nav-child-menu,
-        .nav-item:focus-within .nav-child-menu {
+        .nav-item:focus-within .nav-child-menu,
+        .nav-item--open .nav-child-menu {
           opacity: 1;
           pointer-events: auto;
           transform: translateX(-50%) translateY(0);

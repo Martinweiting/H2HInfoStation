@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Crown } from 'lucide-react'
 import { Placeholder } from '../Placeholder.jsx'
 import { MEMBERS } from '../../data/index.js'
 import { getMemberPhoto } from '../../data/memberPhotos.js'
@@ -7,6 +8,7 @@ export function MagazineCard({ m, onClick }) {
   const [hovered, setHovered] = useState(false)
   const idx = MEMBERS.indexOf(m)
   const photo = getMemberPhoto(m.en, 'magazine')
+  const isJiwoo = m.en === 'Jiwoo'
 
   return (
     <article
@@ -16,13 +18,42 @@ export function MagazineCard({ m, onClick }) {
       style={{
         width: '100%',
         background: 'rgba(255,255,255,.78)',
-        border: '.5px solid rgba(26,43,69,.12)',
+        border: isJiwoo ? '1px solid rgba(255,214,102,.72)' : '.5px solid rgba(26,43,69,.12)',
         cursor: 'pointer',
-        boxShadow: hovered ? '0 18px 40px rgba(26,43,69,.18)' : 'none',
+        boxShadow: hovered
+          ? isJiwoo
+            ? '0 20px 42px rgba(26,43,69,.18), 0 0 26px rgba(255,214,102,.30)'
+            : '0 18px 40px rgba(26,43,69,.18)'
+          : isJiwoo
+            ? '0 0 0 1px rgba(255,214,102,.26), 0 0 18px rgba(255,214,102,.18)'
+            : 'none',
         transition: 'box-shadow .2s',
+        position: 'relative',
       }}
       aria-label={`${m.en} 成員卡片`}
     >
+      {isJiwoo && (
+        <div aria-hidden="true" style={{
+          position: 'absolute',
+          top: 10,
+          right: 10,
+          zIndex: 2,
+          width: 32,
+          height: 32,
+          borderRadius: 999,
+          background: 'rgba(255,255,255,.88)',
+          border: '1px solid rgba(255,214,102,.82)',
+          boxShadow: '0 8px 18px rgba(26,43,69,.14), 0 0 18px rgba(255,214,102,.34)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#D9A71C',
+          pointerEvents: 'none',
+        }}>
+          <Crown size={17} strokeWidth={2.25} />
+        </div>
+      )}
+
       {photo ? (
         <img
           src={photo}

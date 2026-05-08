@@ -5,6 +5,7 @@ import { Header } from './components/Header.jsx'
 import { Hero } from './components/Hero.jsx'
 import { About } from './components/About.jsx'
 import { Members } from './components/Members.jsx'
+import { FanSites } from './components/FanSites.jsx'
 import { MusicVideos } from './components/MusicVideos.jsx'
 import { Discography } from './components/Discography.jsx'
 import { Schedule } from './components/Schedule.jsx'
@@ -47,11 +48,13 @@ export default function App() {
       <main style={{ opacity: loaded ? 1 : 0, transition: 'opacity .4s ease .1s' }}>
         <Hero dark={dark} />
         <hr style={{ border: 'none', borderTop: rule }} />
-        <Members dark={dark} />
-        <hr style={{ border: 'none', borderTop: rule }} />
         <About dark={dark} />
         <hr style={{ border: 'none', borderTop: rule }} />
+        <Members dark={dark} />
+        <hr style={{ border: 'none', borderTop: rule }} />
         <MusicVideos dark={dark} />
+        <hr style={{ border: 'none', borderTop: rule }} />
+        <FanSites dark={dark} />
         <hr style={{ border: 'none', borderTop: rule }} />
         <Discography dark={dark} />
         <hr style={{ border: 'none', borderTop: rule }} />

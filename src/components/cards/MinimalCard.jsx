@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Crown } from 'lucide-react'
 import { Placeholder } from '../Placeholder.jsx'
 import { getMemberPhoto } from '../../data/memberPhotos.js'
 
@@ -7,6 +8,7 @@ const TONES = { sky: '#E6F4FB', blush: '#FFE5EC', cream: '#F5F0FF' }
 export function MinimalCard({ m, onClick }) {
   const [hovered, setHovered] = useState(false)
   const photo = getMemberPhoto(m.en, 'minimal')
+  const isJiwoo = m.en === 'Jiwoo'
 
   return (
     <article
@@ -19,11 +21,40 @@ export function MinimalCard({ m, onClick }) {
         background: TONES[m.tone] || TONES.sky,
         cursor: 'pointer',
         transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-        boxShadow: hovered ? '0 14px 28px rgba(26,43,69,.14)' : 'none',
+        boxShadow: hovered
+          ? isJiwoo
+            ? '0 16px 30px rgba(26,43,69,.14), 0 0 26px rgba(255,214,102,.34)'
+            : '0 14px 28px rgba(26,43,69,.14)'
+          : isJiwoo
+            ? '0 0 0 2px rgba(255,214,102,.62), 0 0 20px rgba(255,214,102,.24)'
+            : 'none',
         transition: 'transform .25s, box-shadow .25s',
+        position: 'relative',
       }}
       aria-label={`${m.en} 成員卡片`}
     >
+      {isJiwoo && (
+        <div aria-hidden="true" style={{
+          position: 'absolute',
+          top: 8,
+          right: 8,
+          zIndex: 2,
+          width: 30,
+          height: 30,
+          borderRadius: 999,
+          background: 'rgba(255,255,255,.88)',
+          border: '1px solid rgba(255,214,102,.82)',
+          boxShadow: '0 8px 18px rgba(26,43,69,.14), 0 0 18px rgba(255,214,102,.34)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#D9A71C',
+          pointerEvents: 'none',
+        }}>
+          <Crown size={16} strokeWidth={2.25} />
+        </div>
+      )}
+
       {photo ? (
         <img
           src={photo}

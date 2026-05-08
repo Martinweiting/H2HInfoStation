@@ -39,7 +39,7 @@ export function Footer({ dark }) {
               PAGES
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {[['\u6210\u54e1', '#members'], ['\u97f3\u6a02\u4f5c\u54c1', '#mv'], ['\u6642\u9593\u8ef8', '#discography'], ['\u884c\u7a0b', '#schedule'], ['\u7167\u7247', '#gallery'], ['Fan Wall', '#fanwall']].map(([l, h]) => (
+              {[['\u6210\u54e1', '#members'], ['\u7ad9\u5b50\u8490\u96c6', '#fan-sites'], ['\u97f3\u6a02\u4f5c\u54c1', '#mv'], ['\u6642\u9593\u8ef8', '#discography'], ['\u884c\u7a0b', '#schedule'], ['\u7167\u7247', '#gallery'], ['Fan Wall', '#fanwall']].map(([l, h]) => (
                 <li key={h}>
                   <a href={h} style={{ fontSize: 18, color: p.textSoft, transition: 'color .2s' }}
                     onMouseEnter={e => e.currentTarget.style.color = p.text}
