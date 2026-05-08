@@ -515,12 +515,12 @@ export const SCHEDULE = [
 ]
 
 export const FAN_MESSAGES = [
-  { name: '@s2u_lily',      msg: '看到 Music Bank 裡面的表演還在哭！Jiwoo unnie 一個眼神讓我的心跳停了一拍。', tag: '#우리의새벽',    tone: 'sky'   },
-  { name: '@hearts_chichi', msg: '不敢相信已經是 H2H 粉絲 365 天。從第一次聽《The Chase》到現在，我們真的沒有任何遺憾 💙', tag: '#H2H_1YEAR',  tone: 'blush' },
-  { name: '@minty_juun',    msg: 'Juun 在 V Live 裡說的那句話真的讓我感動到！下次見面一定要抱緊她 +1 心。',     tag: '#Juun_cafe',   tone: 'cream' },
-  { name: '@yeon_ssi',      msg: '搶到 Hearts 2 House 票了！從台北特地趕來 🌸 連機票都訂好了！',                tag: '#H2HOUSE',     tone: 'sky'   },
-  { name: '@stella_pocket', msg: 'Stella 配樂的聲音突然在某個電影原聲帶中出現，期待 OST！',                     tag: '#Stella_voice', tone: 'blush' },
-  { name: '@carmen_fan',    msg: 'Carmen 在 fancam 裡鏡頭前的那個笑容真的太治癒了 💗',                         tag: '#Carmen_smile', tone: 'cream' },
+  { name: '崔大呆我的神',      msg: '回去看到出道表演太感動了呀...Jiwoo언니眼神簡直要把我帶走', tag: '#우리의새벽',    tone: 'sky'   },
+  { name: 'mochichi', msg: '不敢相信已經是哈兔哈粉絲一年了 從第一次聽The Chase到現在 從來沒後悔追過', tag: '#H2H_1YEAR',  tone: 'blush' },
+  { name: 'Juunis109',    msg: '小白狗主恩在WVS裡說的每句話真的讓我好感動 下次視簽一定要跟他大聊特聊。',     tag: '#Juun_cafe',   tone: 'cream' },
+  { name: '被鄭以安飯撒的人',      msg: '這次美場也太好看了😭😭我一直在哭 六個人都是實物戰神呀 守護世界上最好的心妹們',     tag: '#H2HOUSE',     tone: 'sky'   },
+  { name: '餡兒拉拉山谷女孩', msg: '有人跟我一樣被Stella在Rude!裡面的那段對白洗腦的嗎 每天睡前都在床上大喊',  tag: '#Stella_voice', tone: 'blush' },
+  { name: '世界上最好的卡了門',    msg: 'Carmen 在 fancam 裡鏡頭前的那個笑容真的太治癒了 愛死',                         tag: '#Carmen_smile', tone: 'cream' },
 ]
 
 export const GALLERY_TILES = [

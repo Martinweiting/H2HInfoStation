@@ -11,6 +11,7 @@ import { Discography } from './components/Discography.jsx'
 import { Schedule } from './components/Schedule.jsx'
 import { Gallery } from './components/Gallery.jsx'
 import { FanWall } from './components/FanWall.jsx'
+import { FutureFeatures } from './components/FutureFeatures.jsx'
 import { Footer } from './components/Footer.jsx'
 import { LoadingScreen } from './components/LoadingScreen.jsx'
 
@@ -63,6 +64,8 @@ export default function App() {
         <Gallery dark={dark} />
         <hr style={{ border: 'none', borderTop: rule }} />
         <FanWall dark={dark} />
+        <hr style={{ border: 'none', borderTop: rule }} />
+        <FutureFeatures dark={dark} />
       </main>
 
       <Footer dark={dark} />

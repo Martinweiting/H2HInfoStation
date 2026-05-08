@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Heart, TrendingUp } from 'lucide-react'
+import { Heart, X } from 'lucide-react'
 import { FAN_MESSAGES } from '../data/index.js'
 
 const NOTE_COLORS = {
@@ -18,12 +18,15 @@ const TRENDING = [
 ]
 
 const TONES = ['sky', 'blush', 'cream']
+const REVIEW_NOTICE = '\u4F60\u7684\u4FE1\u4EF6\u5F85\u5BE9\u6838\u901A\u904E\u5F8C\u5373\u6703\u66F4\u65B0\u65BC\u7DB2\u7AD9\u4E0A\uFF01'
 
 export function FanWall({ dark }) {
-  const [messages, setMessages] = useState(FAN_MESSAGES)
+  const messages = FAN_MESSAGES
+  const [draftName, setDraftName] = useState('')
   const [draft, setDraft] = useState('')
   const [draftTone, setDraftTone] = useState('sky')
   const [draftTag, setDraftTag] = useState('')
+  const [reviewNoticeOpen, setReviewNoticeOpen] = useState(false)
 
   const p = dark ? {
     bg: '#0B1530', panel: '#15224A', text: '#F8FAFF', textSoft: 'rgba(248,250,255,.62)',
@@ -33,23 +36,28 @@ export function FanWall({ dark }) {
     rule: 'rgba(26,43,69,.10)', accent: '#5AB3D9',
   }
 
-  const handlePost = () => {
-    const trimmed = draft.trim()
-    if (!trimmed) return
-    setMessages(prev => [{
-      name: '@你',
-      msg: trimmed,
-      tag: draftTag ? `#${draftTag}` : '#H2H_S2U',
-      tone: draftTone,
-    }, ...prev])
-    setDraft('')
-    setDraftTag('')
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    setReviewNoticeOpen(true)
+  }
+
+  const handleComposerKeyDown = (event) => {
+    if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+      handleSubmit(event)
+    }
   }
 
   return (
     <section id="fanwall" aria-labelledby="fanwall-heading" style={{
       background: p.bg, color: p.text, fontFamily: 'var(--ff-body)',
     }}>
+      {reviewNoticeOpen && (
+        <ReviewNoticeModal
+          dark={dark}
+          palette={p}
+          onClose={() => setReviewNoticeOpen(false)}
+        />
+      )}
       {/* Header */}
       <div style={{
         padding: 'clamp(40px, 6vw, 72px) clamp(24px, 5vw, 64px) clamp(24px, 3vw, 40px)',
@@ -79,14 +87,52 @@ export function FanWall({ dark }) {
             <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 16.5, letterSpacing: '.22em', color: p.textSoft, marginBottom: 10 }}>
               ✉ WRITE A LETTER
             </div>
-            <div style={{
+            <form onSubmit={handleSubmit} style={{
               background: dark ? 'rgba(255,255,255,.06)' : 'rgba(255,255,255,.76)',
               border: `0.5px solid ${p.rule}`, borderRadius: 12, padding: 18,
             }}>
+              <label style={{
+                display: 'grid',
+                gap: 7,
+                marginBottom: 14,
+                color: p.textSoft,
+                fontSize: 16.5,
+                lineHeight: 1.45,
+              }}>
+                <span style={{
+                  fontFamily: 'var(--ff-mono)',
+                  fontSize: 14.5,
+                  letterSpacing: '.18em',
+                  color: p.textSoft,
+                }}>
+                  NICKNAME
+                </span>
+                <input
+                  value={draftName}
+                  onChange={e => setDraftName(e.target.value)}
+                  placeholder={'\u586B\u5BEB\u4F60\u7684\u66B1\u7A31'}
+                  aria-label={'\u66B1\u7A31'}
+                  autoComplete="off"
+                  style={{
+                    width: '100%',
+                    background: dark ? 'rgba(255,255,255,.045)' : 'rgba(255,255,255,.70)',
+                    border: `0.5px solid ${p.rule}`,
+                    borderRadius: 8,
+                    outline: 'none',
+                    padding: '10px 12px',
+                    fontFamily: 'var(--ff-body)',
+                    fontSize: 17,
+                    lineHeight: 1.4,
+                    color: p.text,
+                    caretColor: p.accent,
+                  }}
+                />
+              </label>
+
               <textarea
                 value={draft}
                 onChange={e => setDraft(e.target.value)}
-                onKeyDown={e => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) handlePost() }}
+                onKeyDown={handleComposerKeyDown}
                 placeholder="寫下你想對 Hearts2Hearts 說的話…"
                 aria-label="寫信內容"
                 style={{
@@ -105,7 +151,7 @@ export function FanWall({ dark }) {
                 <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
                   {/* Tone picker */}
                   {TONES.map(t => (
-                    <button key={t} onClick={() => setDraftTone(t)}
+                    <button key={t} type="button" onClick={() => setDraftTone(t)}
                       aria-label={`選擇 ${t} 色調`}
                       aria-pressed={draftTone === t}
                       style={{
@@ -133,9 +179,9 @@ export function FanWall({ dark }) {
                   </div>
                 </div>
 
-                <PostButton onClick={handlePost} dark={dark} />
+                <PostButton dark={dark} />
               </div>
-            </div>
+            </form>
           </div>
 
           {/* Trending */}
@@ -219,12 +265,118 @@ export function FanWall({ dark }) {
   )
 }
 
-function PostButton({ onClick, dark }) {
+function ReviewNoticeModal({ dark, palette, onClose }) {
+  return (
+    <motion.div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="fanwall-review-notice-title"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: .18 }}
+      onClick={onClose}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 1100,
+        display: 'grid',
+        placeItems: 'center',
+        padding: 22,
+        background: dark ? 'rgba(3,8,22,.68)' : 'rgba(10,16,35,.42)',
+        backdropFilter: 'blur(7px)',
+        WebkitBackdropFilter: 'blur(7px)',
+      }}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 18, scale: .96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ type: 'spring', stiffness: 340, damping: 30 }}
+        onClick={(event) => event.stopPropagation()}
+        style={{
+          width: 'min(460px, 100%)',
+          borderRadius: 18,
+          overflow: 'hidden',
+          background: dark ? '#15224A' : '#F8FBFF',
+          color: palette.text,
+          border: `0.5px solid ${palette.rule}`,
+          boxShadow: dark ? '0 26px 90px rgba(0,0,0,.42)' : '0 26px 90px rgba(26,43,69,.18)',
+        }}
+      >
+        <div style={{
+          position: 'relative',
+          padding: '24px 24px 22px',
+          background: dark
+            ? 'linear-gradient(140deg, rgba(135,206,235,.18), rgba(255,138,168,.08))'
+            : 'linear-gradient(140deg, rgba(230,244,251,.95), rgba(255,229,236,.75))',
+          borderBottom: `0.5px solid ${palette.rule}`,
+        }}>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close notice"
+            style={{
+              position: 'absolute',
+              top: 16,
+              right: 16,
+              width: 34,
+              height: 34,
+              borderRadius: 999,
+              border: 'none',
+              background: dark ? 'rgba(255,255,255,.10)' : 'rgba(26,43,69,.08)',
+              color: palette.text,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <X size={15} />
+          </button>
+          <div id="fanwall-review-notice-title" style={{
+            paddingRight: 40,
+            fontSize: 20,
+            lineHeight: 1.75,
+            color: palette.text,
+            fontWeight: 700,
+          }}>
+            {REVIEW_NOTICE}
+          </div>
+        </div>
+        <div style={{
+          padding: '16px 24px 22px',
+          display: 'flex',
+          justifyContent: 'flex-end',
+        }}>
+          <button
+            type="button"
+            onClick={onClose}
+            style={{
+              appearance: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '10px 22px',
+              borderRadius: 999,
+              background: dark ? '#F8FAFF' : '#1A2B45',
+              color: dark ? '#1A2B45' : '#F8FAFF',
+              fontFamily: 'var(--ff-display)',
+              fontStyle: 'italic',
+              fontWeight: 600,
+              fontSize: 15,
+            }}
+          >
+            OK
+          </button>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+function PostButton({ dark }) {
   const [hovered, setHovered] = useState(false)
   const shadow = dark ? '#5AB3D9' : '#1A2B45'
   return (
     <button
-      onClick={onClick}
+      type="submit"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       aria-label="發佈留言"
