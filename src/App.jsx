@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronUp } from 'lucide-react'
+import { Analytics } from '@vercel/analytics/react'
 import { Header } from './components/Header.jsx'
 import { Hero } from './components/Hero.jsx'
 import { About } from './components/About.jsx'
@@ -100,6 +101,8 @@ export default function App() {
           </motion.button>
         )}
       </AnimatePresence>
+
+      <Analytics />
     </>
   )
 }
