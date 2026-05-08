@@ -24,13 +24,28 @@ export function Footer({ dark }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
               <Heart size={18} color="#FF8AA8" fill="#FF8AA8" />
               <span className="ff-display" style={{ fontStyle: 'italic', fontSize: 18, fontWeight: 600, color: p.text }}>
-                Hearts2Hearts
+                CONTACT ME
               </span>
             </div>
-            <p style={{ fontSize: 17, lineHeight: 1.7, color: p.textSoft, maxWidth: 240 }}>
-              SM Entertainment 旗下八人女子組合。出道日：2025.02.24。
-              代表色 Sky Blue。S2U，我們愛你們。
-            </p>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {[
+                ['Threads', 'https://www.threads.com/@dry_martinim'],
+                ['個人網站', 'https://martin-portfolio2026.vercel.app/'],
+              ].map(([l, h]) => (
+                <li key={l}>
+                  <a
+                    href={h}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ fontSize: 18, color: p.textSoft, transition: 'color .2s' }}
+                    onMouseEnter={e => e.currentTarget.style.color = p.text}
+                    onMouseLeave={e => e.currentTarget.style.color = p.textSoft}
+                  >
+                    {l}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Links */}

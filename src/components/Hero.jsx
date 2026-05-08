@@ -147,7 +147,7 @@ export function Hero({ dark }) {
           }}
         >
           <Sparkles size={12} color={p.accent} />
-          <span>OFFICIAL FAN HUB · 2025 ×</span>
+          <span>MADE BY MARTIN · 2026</span>
           <Sparkles size={12} color={p.accent} />
         </motion.div>
 
@@ -199,7 +199,7 @@ export function Hero({ dark }) {
         >
           <span className="ff-display" style={{ fontStyle: 'italic', fontSize: 17, color: p.text }}>Connect Hearts, Beat as One</span>
           <br />
-          來自 SM Entertainment · 八位女孩的夢幻組合 · 代表色 Sky Blue
+          來自 SM Entertainment · 八位女孩的夢幻組合 · 粉絲與偶像心連心傳遞真摯情感
         </motion.p>
 
         {/* CTA buttons */}

@@ -60,7 +60,7 @@ export function LoadingScreen({ onDone }) {
               letterSpacing: '.28em', color: '#1A2B45',
             }}
           >
-            OFFICIAL FAN HUB · S2U
+            UNOFFICIAL FAN HUB · S2U
           </motion.div>
 
           {/* Progress bar */}
