@@ -154,6 +154,7 @@ function StatDetailModal({ stat, dark, palette, onClose }) {
             position: 'relative',
           }}>
             <button
+              className="stat-modal-close"
               type="button"
               onClick={onClose}
               aria-label="關閉詳細介紹"
@@ -261,7 +262,7 @@ function OrbitMark({ dark, palette }) {
   const orbit = dark ? 'rgba(255,255,255,.18)' : 'rgba(26,43,69,.10)'
 
   return (
-    <div aria-hidden="true" style={{
+    <div className="about-orbit-mark" aria-hidden="true" style={{
       position: 'relative',
       minHeight: 360,
       borderRadius: 28,
@@ -427,13 +428,13 @@ export function About({ dark }) {
         zIndex: 1,
         padding: 'clamp(44px, 7vw, 88px) clamp(24px, 5vw, 64px)',
       }}>
-        <div style={{
+        <div className="about-main-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))',
           gap: 'clamp(28px, 5vw, 68px)',
           alignItems: 'center',
         }}>
-          <motion.div {...fadeUp(0)}>
+          <motion.div className="about-copy-block" {...fadeUp(0)}>
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -495,12 +496,7 @@ export function About({ dark }) {
             </div>
           </motion.div>
 
-          <motion.div {...fadeUp(1)}>
-            <OrbitMark dark={dark} palette={p} />
-          </motion.div>
-        </div>
-
-        <div style={{
+          <div className="about-stat-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(158px, 1fr))',
           gap: 1,
@@ -510,11 +506,14 @@ export function About({ dark }) {
           borderRadius: 24,
           background: p.rule,
           boxShadow: p.shadow,
+          gridColumn: '1 / -1',
+          order: 3,
         }}>
           {STATS.map((s, i) => {
             const Icon = s.icon
             return (
               <motion.button
+                className="about-stat-card"
                 type="button"
                 key={s.label}
                 {...fadeUp(i)}
@@ -579,9 +578,98 @@ export function About({ dark }) {
               </motion.button>
             )
           })}
+          </div>
+
+          <motion.div className="about-orbit-wrap" style={{ order: 2 }} {...fadeUp(1)}>
+            <OrbitMark dark={dark} palette={p} />
+          </motion.div>
         </div>
 
       </div>
+      <style>{`
+        @media (max-width: 480px) {
+          #about > div:last-child {
+            padding: 34px 18px 36px !important;
+            display: flex !important;
+            flex-direction: column !important;
+          }
+
+          .about-main-grid {
+            display: contents !important;
+          }
+
+          .about-copy-block {
+            order: 1 !important;
+          }
+
+          .about-stat-grid {
+            order: 2 !important;
+          }
+
+          .about-orbit-wrap {
+            order: 3 !important;
+            margin-top: 18px !important;
+          }
+
+          #about h2 {
+            font-size: 42px !important;
+            line-height: .98 !important;
+          }
+
+          .about-orbit-mark {
+            min-height: 220px !important;
+            border-radius: 18px !important;
+          }
+
+          .about-orbit-mark > div[style*="inset: 56px"] {
+            display: none !important;
+          }
+
+          .about-orbit-mark .ff-display {
+            font-size: 68px !important;
+          }
+
+          .about-orbit-mark > div:last-child {
+            display: none !important;
+          }
+
+          .about-stat-grid {
+            grid-template-columns: minmax(0, 1fr) !important;
+            border-radius: 16px !important;
+            margin-top: 28px !important;
+          }
+
+          .about-stat-card {
+            min-height: 76px !important;
+            padding: 14px 16px !important;
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) auto !important;
+            gap: 8px 12px !important;
+          }
+
+          .about-stat-card > div:first-child {
+            grid-column: 1 / -1;
+          }
+
+          .about-stat-card > div:last-child {
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) auto !important;
+            align-items: end !important;
+            gap: 12px !important;
+          }
+
+          .about-stat-card:hover {
+            transform: none !important;
+          }
+
+          .stat-modal-close {
+            width: 44px !important;
+            height: 44px !important;
+            top: 12px !important;
+            right: 12px !important;
+          }
+        }
+      `}</style>
     </section>
     </>
   )

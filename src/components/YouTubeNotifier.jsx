@@ -191,6 +191,7 @@ export function YouTubeNotifier({ dark, border }) {
   return (
     <div className="youtube-notifier" style={{ position: 'relative' }}>
       <button
+        className="youtube-notifier-button"
         type="button"
         onClick={toggleOpen}
         aria-label="YouTube video notifications"
@@ -472,6 +473,31 @@ export function YouTubeNotifier({ dark, border }) {
 
         .youtube-notifier-spin {
           animation: youtube-notifier-spin .8s linear infinite;
+        }
+
+        @media (max-width: 480px) {
+          .youtube-notifier-button {
+            width: 44px !important;
+            height: 44px !important;
+          }
+
+          .youtube-notifier > div[style*="position: absolute"] {
+            position: fixed !important;
+            top: 76px !important;
+            left: 12px !important;
+            right: 12px !important;
+            width: auto !important;
+            max-height: calc(100svh - 96px) !important;
+            border-radius: 14px !important;
+          }
+
+          .youtube-notifier a[style*="position: fixed"] {
+            top: 82px !important;
+            left: 12px !important;
+            right: 12px !important;
+            width: auto !important;
+            grid-template-columns: 88px minmax(0, 1fr) 32px !important;
+          }
         }
       `}</style>
     </div>

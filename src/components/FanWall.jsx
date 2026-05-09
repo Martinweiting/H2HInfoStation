@@ -87,7 +87,7 @@ export function FanWall({ dark }) {
             <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 16.5, letterSpacing: '.22em', color: p.textSoft, marginBottom: 10 }}>
               ✉ WRITE A LETTER
             </div>
-            <form onSubmit={handleSubmit} style={{
+            <form className="fanwall-composer-form" onSubmit={handleSubmit} style={{
               background: dark ? 'rgba(255,255,255,.06)' : 'rgba(255,255,255,.76)',
               border: `0.5px solid ${p.rule}`, borderRadius: 12, padding: 18,
             }}>
@@ -143,7 +143,7 @@ export function FanWall({ dark }) {
                 }}
               />
 
-              <div style={{
+              <div className="fanwall-composer-actions" style={{
                 display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                 marginTop: 14, paddingTop: 14, borderTop: `0.5px solid ${p.rule}`,
                 flexWrap: 'wrap', gap: 10,
@@ -152,6 +152,7 @@ export function FanWall({ dark }) {
                   {/* Tone picker */}
                   {TONES.map(t => (
                     <button key={t} type="button" onClick={() => setDraftTone(t)}
+                      className="fanwall-tone-button"
                       aria-label={`選擇 ${t} 色調`}
                       aria-pressed={draftTone === t}
                       style={{
@@ -185,10 +186,10 @@ export function FanWall({ dark }) {
           </div>
 
           {/* Trending */}
-          <div>
-            <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 16.5, letterSpacing: '.22em', color: p.textSoft, marginBottom: 10 }}>
+          <details className="fanwall-trending" open>
+            <summary style={{ fontFamily: 'var(--ff-mono)', fontSize: 16.5, letterSpacing: '.22em', color: p.textSoft, marginBottom: 10, cursor: 'pointer', listStyle: 'none' }}>
               # TRENDING
-            </div>
+            </summary>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
               {TRENDING.map(([tag, n]) => (
                 <li key={tag} style={{
@@ -202,13 +203,13 @@ export function FanWall({ dark }) {
                 </li>
               ))}
             </ul>
-          </div>
+          </details>
         </div>
       </div>
 
       {/* Notes wall */}
       <div style={{ padding: 'clamp(28px, 4vw, 48px) clamp(24px, 5vw, 64px)' }}>
-        <div style={{
+        <div className="fanwall-notes-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
           gap: 'clamp(16px, 2.5vw, 28px)',
@@ -231,6 +232,7 @@ export function FanWall({ dark }) {
                   cursor: 'default',
                 }}
                 aria-label={`來自 ${m.name} 的留言`}
+                className="fanwall-note-card"
               >
                 {/* Tape */}
                 <div aria-hidden="true" style={{
@@ -247,7 +249,7 @@ export function FanWall({ dark }) {
                   {m.msg}
                 </p>
 
-                <div style={{
+      <div style={{
                   display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
                   marginTop: 14, paddingTop: 12, borderTop: '1px dashed rgba(26,43,69,.2)',
                 }}>
@@ -261,6 +263,113 @@ export function FanWall({ dark }) {
           })}
         </div>
       </div>
+      <style>{`
+        @media (max-width: 520px) {
+          #fanwall > div:nth-child(2) {
+            padding: 36px 18px 22px !important;
+          }
+
+          #fanwall > div:nth-child(3) {
+            padding: 22px 18px !important;
+          }
+
+          #fanwall h2 {
+            font-size: 38px !important;
+          }
+
+          .fanwall-composer-form {
+            padding: 16px !important;
+          }
+
+          .fanwall-trending {
+            border-radius: 12px;
+            border: 0.5px solid ${p.rule};
+            padding: 12px;
+            background: ${dark ? 'rgba(255,255,255,.045)' : 'rgba(255,255,255,.62)'};
+          }
+
+          .fanwall-trending summary {
+            min-height: 44px;
+            display: flex !important;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0 !important;
+          }
+
+          .fanwall-trending summary::-webkit-details-marker {
+            display: none;
+          }
+
+          .fanwall-trending summary::after {
+            content: '+';
+            font-family: var(--ff-mono);
+            font-size: 20px;
+            letter-spacing: 0;
+          }
+
+          .fanwall-trending[open] summary {
+            margin-bottom: 10px !important;
+          }
+
+          .fanwall-trending[open] summary::after {
+            content: '-';
+          }
+
+          .fanwall-composer-actions {
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) !important;
+            align-items: stretch !important;
+            gap: 14px !important;
+          }
+
+          .fanwall-composer-actions > div {
+            display: grid !important;
+            grid-template-columns: repeat(3, 36px) minmax(0, 1fr) !important;
+            gap: 10px !important;
+            align-items: center !important;
+          }
+
+          .fanwall-tone-button {
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 10px !important;
+          }
+
+          .fanwall-composer-actions input {
+            width: 100% !important;
+            min-height: 44px;
+          }
+
+          .fanwall-composer-actions button[type="submit"] {
+            width: 100% !important;
+            min-height: 44px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
+
+          .fanwall-notes-grid {
+            grid-template-columns: minmax(0, 1fr) !important;
+            gap: 14px !important;
+          }
+
+          .fanwall-note-card {
+            transform: none !important;
+          }
+
+          .fanwall-review-close {
+            width: 44px !important;
+            height: 44px !important;
+            top: 10px !important;
+            right: 10px !important;
+          }
+
+          .fanwall-review-ok {
+            min-height: 44px !important;
+            min-width: 96px !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }
@@ -311,6 +420,7 @@ function ReviewNoticeModal({ dark, palette, onClose }) {
           borderBottom: `0.5px solid ${palette.rule}`,
         }}>
           <button
+            className="fanwall-review-close"
             type="button"
             onClick={onClose}
             aria-label="Close notice"
@@ -348,6 +458,7 @@ function ReviewNoticeModal({ dark, palette, onClose }) {
           justifyContent: 'flex-end',
         }}>
           <button
+            className="fanwall-review-ok"
             type="button"
             onClick={onClose}
             style={{

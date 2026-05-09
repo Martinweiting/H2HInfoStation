@@ -54,7 +54,7 @@ export function Gallery({ dark }) {
           </div>
         </div>
 
-        <div role="group" aria-label="Gallery filters" style={{ display: 'flex', gap: 8, marginTop: 24, flexWrap: 'wrap' }}>
+        <div className="gallery-filters" role="group" aria-label="Gallery filters" style={{ display: 'flex', gap: 8, marginTop: 24, flexWrap: 'wrap' }}>
           {CATS.map(c => (
             <button key={c.v} onClick={() => setFilter(c.v)}
               aria-pressed={filter === c.v}
@@ -82,9 +82,44 @@ export function Gallery({ dark }) {
           <style>{`
             #gallery .masonry-grid { --cols: 4; }
             @media (max-width: 1024px) { #gallery .masonry-grid { --cols: 3 !important; } }
-            @media (max-width: 640px)  { #gallery .masonry-grid { --cols: 2 !important; } }
+            @media (max-width: 640px)  { #gallery .masonry-grid { --cols: 1 !important; } }
             @media (max-width: 420px)  { #gallery .masonry-grid { --cols: 1 !important; } }
             @media (max-width: 520px) {
+              #gallery > div:first-child {
+                padding: 36px 18px 20px !important;
+              }
+
+              #gallery > div:nth-child(2) {
+                padding: 22px 18px 34px !important;
+              }
+
+              #gallery h2 {
+                font-size: 38px !important;
+              }
+
+              #gallery .gallery-filters {
+                flex-wrap: nowrap !important;
+                overflow-x: auto;
+                margin-left: -18px !important;
+                margin-right: -18px !important;
+                padding: 0 18px 6px !important;
+                scrollbar-width: none;
+              }
+
+              #gallery .gallery-filters::-webkit-scrollbar {
+                display: none;
+              }
+
+              #gallery .gallery-filters button {
+                flex: 0 0 auto;
+                min-height: 44px;
+              }
+
+              #gallery .gallery-lightbox-close {
+                width: 44px !important;
+                height: 44px !important;
+              }
+
               #gallery [data-gallery-label] {
                 max-width: calc(100% - 20px);
                 white-space: normal;
@@ -184,6 +219,7 @@ export function Gallery({ dark }) {
               <button
                 onClick={() => setLightbox(null)}
                 aria-label="Close lightbox"
+                className="gallery-lightbox-close"
                 style={{
                   position: 'absolute', top: 12, right: 12,
                   appearance: 'none', border: 'none', cursor: 'pointer',

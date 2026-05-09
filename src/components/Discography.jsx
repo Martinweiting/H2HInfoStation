@@ -131,8 +131,10 @@ export function Discography({ dark }) {
               </div>
 
               {/* Cover */}
-              <Placeholder label={r.title.toUpperCase()} tone={r.color}
-                ratio="1/1" style={{ width: '100%', borderRadius: 8 }} />
+              <div className="timeline-cover">
+                <Placeholder label={r.title.toUpperCase()} tone={r.color}
+                  ratio="1/1" style={{ width: '100%', borderRadius: 8 }} />
+              </div>
             </motion.div>
           ))}
         </div>
@@ -239,6 +241,7 @@ export function Discography({ dark }) {
                   </h3>
                 </div>
                 <button
+                  className="timeline-modal-close"
                   type="button"
                   onClick={() => setTimelineOpen(false)}
                   aria-label="關閉完整時間軸"
@@ -326,12 +329,14 @@ export function Discography({ dark }) {
                           ))}
                         </div>
                       </div>
-                      <Placeholder
-                        label={r.title.toUpperCase()}
-                        tone={r.color}
-                        ratio="1/1"
-                        style={{ width: '100%', borderRadius: 8 }}
-                      />
+                      <div className="timeline-modal-cover">
+                        <Placeholder
+                          label={r.title.toUpperCase()}
+                          tone={r.color}
+                          ratio="1/1"
+                          style={{ width: '100%', borderRadius: 8 }}
+                        />
+                      </div>
                     </article>
                   ))}
                 </div>
@@ -362,6 +367,17 @@ export function Discography({ dark }) {
             display: none !important;
           }
 
+          .discography-release .timeline-cover {
+            display: none !important;
+          }
+
+          .discography-release a,
+          .timeline-modal-item a {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+          }
+
           .timeline-modal-item {
             grid-template-columns: minmax(0, 1fr) !important;
           }
@@ -372,6 +388,47 @@ export function Discography({ dark }) {
 
           .timeline-modal-item > div:first-child {
             overflow-wrap: anywhere;
+          }
+        }
+
+        @media (max-width: 520px) {
+          #discography > div:first-child {
+            padding: 36px 18px 20px !important;
+          }
+
+          #discography > div:nth-child(2) {
+            padding: 28px 18px 34px !important;
+          }
+
+          #discography h2 {
+            font-size: 38px !important;
+          }
+
+          .timeline-modal-item {
+            gap: 10px !important;
+            padding: 14px 0 !important;
+          }
+
+          .timeline-modal-cover {
+            display: none !important;
+          }
+
+          [aria-labelledby="timeline-modal-title"] > div {
+            width: 100% !important;
+            max-height: 100svh !important;
+            height: 100svh !important;
+            border-radius: 0 !important;
+          }
+
+          [aria-labelledby="timeline-modal-title"] > div > div:first-child {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+          }
+
+          .timeline-modal-close {
+            width: 44px !important;
+            height: 44px !important;
           }
         }
       `}</style>

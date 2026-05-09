@@ -78,6 +78,7 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
 
           {/* Drawer panel */}
           <motion.div
+            className="member-drawer"
             key="drawer"
             initial={{ x: '100%', opacity: .6 }}
             animate={{ x: 0, opacity: 1 }}
@@ -102,6 +103,7 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
             }}>
               {/* Close */}
               <button
+                className="member-modal-close"
                 onClick={onClose}
                 aria-label="關閉"
                 style={{
@@ -267,6 +269,41 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
               </motion.blockquote>
             </div>
           </motion.div>
+          <style>{`
+            @media (max-width: 520px) {
+              .member-drawer {
+                width: 100vw !important;
+                border-radius: 0 !important;
+              }
+
+              .member-drawer > div:first-child {
+                padding: 28px 18px 22px !important;
+              }
+
+              .member-drawer > div:first-child > div {
+                gap: 14px !important;
+              }
+
+              .member-drawer img {
+                width: 92px !important;
+              }
+
+              .member-modal-close {
+                width: 44px !important;
+                height: 44px !important;
+                top: 12px !important;
+                right: 12px !important;
+              }
+
+              .member-drawer h2 {
+                font-size: 31px !important;
+              }
+
+              .member-drawer > div:last-child {
+                padding: 18px 18px 34px !important;
+              }
+            }
+          `}</style>
         </>
       )}
     </AnimatePresence>

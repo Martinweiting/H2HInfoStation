@@ -126,6 +126,7 @@ export function Header({ dark, onToggleDark }) {
         <YouTubeNotifier dark={dark} border={border} />
 
         <button
+          className="header-icon-button"
           onClick={onToggleDark}
           aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
           style={{
@@ -143,6 +144,7 @@ export function Header({ dark, onToggleDark }) {
 
         {/* Mobile hamburger */}
         <button
+          className="header-icon-button mobile-menu-btn"
           onClick={() => setMenuOpen(v => !v)}
           aria-label="Toggle mobile menu"
           aria-expanded={menuOpen}
@@ -151,7 +153,6 @@ export function Header({ dark, onToggleDark }) {
             appearance: 'none', border: 'none', cursor: 'pointer', background: 'transparent',
             color: dark ? '#F8FAFF' : '#1A2B45',
           }}
-          className="mobile-menu-btn"
         >
           {menuOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
@@ -167,38 +168,84 @@ export function Header({ dark, onToggleDark }) {
             transition={{ duration: .22 }}
             style={{
               position: 'absolute', top: '100%', left: 0, right: 0,
-        background: dark ? 'rgba(11,21,48,.96)' : 'rgba(248,252,255,.96)',
+              background: dark ? 'rgba(11,21,48,.98)' : 'rgba(248,252,255,.98)',
               backdropFilter: 'blur(16px)',
               borderBottom: `0.5px solid ${border}`,
-              padding: '16px 24px',
+              padding: '16px 24px max(22px, env(safe-area-inset-bottom))',
               display: 'flex', flexDirection: 'column', gap: 4,
+              maxHeight: 'calc(100svh - 72px)',
+              overflowY: 'auto',
             }}
             aria-label="Mobile navigation"
           >
             {NAV_LINKS.map(l => (
               <div key={l.href} style={{ borderBottom: `0.5px solid ${border}` }}>
-                <a href={l.href}
-                  onClick={e => {
-                    if (l.children) {
-                      handleTopNavClick(e, l)
-                    } else {
-                      closeMenus()
-                    }
-                  }}
-                  aria-haspopup={l.children ? 'true' : undefined}
-                  aria-expanded={l.children ? openDropdown === l.href : undefined}
-                  style={{
-                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                    padding: '10px 0',
-                    color: dark ? 'rgba(248,250,255,.8)' : 'rgba(26,43,69,.75)',
-                    fontSize: 22, fontWeight: 600,
-                  }}
-                >
-                  {l.label}
-                  {l.children && <ChevronDown size={18} />}
-                </a>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: l.children ? 'minmax(0, 1fr) 44px' : 'minmax(0, 1fr)',
+                  alignItems: 'center',
+                  gap: 6,
+                }}>
+                  <a href={l.href}
+                    onClick={closeMenus}
+                    style={{
+                      display: 'flex', alignItems: 'center',
+                      minHeight: 48,
+                      padding: '10px 0',
+                      color: dark ? 'rgba(248,250,255,.88)' : 'rgba(26,43,69,.82)',
+                      fontSize: 22, fontWeight: 600,
+                    }}
+                  >
+                    {l.label}
+                  </a>
+                  {l.children && (
+                    <button
+                      type="button"
+                      onClick={(e) => handleTopNavClick(e, l)}
+                      aria-label={`展開 ${l.label} 子選單`}
+                      aria-expanded={openDropdown === l.href}
+                      style={{
+                        width: 44,
+                        height: 44,
+                        border: 'none',
+                        borderRadius: 999,
+                        background: openDropdown === l.href
+                          ? (dark ? 'rgba(255,255,255,.13)' : 'rgba(26,43,69,.08)')
+                          : 'transparent',
+                        color: dark ? 'rgba(248,250,255,.82)' : 'rgba(26,43,69,.70)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <ChevronDown size={20} style={{
+                        transform: openDropdown === l.href ? 'rotate(180deg)' : 'rotate(0deg)',
+                        transition: 'transform .18s ease',
+                      }} />
+                    </button>
+                  )}
+                </div>
                 {l.children && openDropdown === l.href && (
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 6, padding: '0 0 12px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: 7, padding: '2px 0 14px' }}>
+                    <a
+                      href={l.href}
+                      onClick={closeMenus}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        minHeight: 44,
+                        borderRadius: 8,
+                        padding: '9px 12px',
+                        background: dark ? 'rgba(135,206,235,.14)' : 'rgba(90,179,217,.12)',
+                        color: dark ? '#F8FAFF' : '#1A2B45',
+                        fontSize: 18,
+                        fontWeight: 700,
+                        overflowWrap: 'anywhere',
+                      }}
+                    >
+                      前往{l.label}
+                    </a>
                     {l.children.map(child => (
                       <a
                         key={child.href}
@@ -207,7 +254,8 @@ export function Header({ dark, onToggleDark }) {
                         style={{
                           display: 'block',
                           borderRadius: 8,
-                          padding: '8px 10px',
+                          minHeight: 44,
+                          padding: '10px 12px',
                           background: dark ? 'rgba(255,255,255,.06)' : 'rgba(26,43,69,.05)',
                           color: dark ? 'rgba(248,250,255,.74)' : 'rgba(26,43,69,.68)',
                           fontSize: 19,
@@ -233,6 +281,17 @@ export function Header({ dark, onToggleDark }) {
           }
           nav[aria-label="Main navigation"] { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
+          header[role="banner"] {
+            height: 72px !important;
+            background: ${dark ? 'rgba(11,21,48,.96)' : 'rgba(248,252,255,.94)'} !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border-bottom: 0.5px solid ${border} !important;
+          }
+          .header-icon-button {
+            width: 44px !important;
+            height: 44px !important;
+          }
         }
 
         .nav-child-menu {
@@ -278,6 +337,7 @@ export function Header({ dark, onToggleDark }) {
           }
           .site-logo {
             gap: 8px !important;
+            min-height: 44px !important;
           }
           .site-logo span {
             font-size: 21px !important;

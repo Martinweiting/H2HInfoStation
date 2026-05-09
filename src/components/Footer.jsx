@@ -100,6 +100,27 @@ export function Footer({ dark }) {
           </span>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 520px) {
+          footer > div {
+            padding: 28px 18px 34px !important;
+          }
+
+          footer a {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+          }
+
+          footer ul {
+            gap: 2px !important;
+          }
+
+          footer [class~="ff-mono"] {
+            overflow-wrap: anywhere;
+          }
+        }
+      `}</style>
     </footer>
   )
 }

@@ -120,7 +120,7 @@ export function Hero({ dark }) {
       </div>
 
       {/* Clouds */}
-      <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '55%', zIndex: 1, pointerEvents: 'none' }} aria-hidden="true">
+      <div className="hero-cloud-layer" style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '55%', zIndex: 1, pointerEvents: 'none' }} aria-hidden="true">
         <Cloud size={420} color={p.cloud} opacity={.55} style={{ position: 'absolute', left: '-4%', bottom: '-8%', filter: 'blur(.4px)' }} />
         <Cloud size={520} color={p.cloud} opacity={.7}  style={{ position: 'absolute', right: '-6%', bottom: '-12%' }} />
         <Cloud size={300} color={p.cloud} opacity={.5}  style={{ position: 'absolute', left: '22%', bottom: '6%' }} />
@@ -204,6 +204,7 @@ export function Hero({ dark }) {
 
         {/* CTA buttons */}
         <motion.div
+          className="hero-cta-row"
           initial={{ opacity: 0 }} animate={{ opacity: mounted ? 1 : 0 }}
           transition={{ duration: .9, delay: 1.4 }}
           style={{ marginTop: 32, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}
@@ -212,6 +213,7 @@ export function Hero({ dark }) {
           <LetterButton dark={dark} />
 
           <button
+            className="hero-secondary-cta"
             onClick={() => document.querySelector('#discography')?.scrollIntoView({ behavior: 'smooth' })}
             style={{
               appearance: 'none', cursor: 'pointer',
@@ -313,12 +315,23 @@ export function Hero({ dark }) {
         </span>
       </motion.div>
       <style>{`
+        @media (max-width: 760px) {
+          .hero-cloud-layer {
+            display: none !important;
+          }
+        }
+
         @media (max-width: 560px) {
+          #hero {
+            min-height: 100svh !important;
+            overflow-x: clip !important;
+          }
+
           .hero-title-block {
             width: 100%;
             padding-left: 20px !important;
             padding-right: 20px !important;
-            margin-top: -4vh !important;
+            margin-top: -2vh !important;
           }
 
           .hero-kicker {
@@ -335,19 +348,51 @@ export function Hero({ dark }) {
           .hero-tagline {
             width: 100% !important;
             max-width: 100% !important;
-            padding: 14px 16px !important;
+            padding: 12px 15px !important;
+            font-size: 18px !important;
+            line-height: 1.58 !important;
             overflow-wrap: anywhere;
+          }
+
+          .hero-tagline .ff-display {
+            font-size: 16px !important;
+          }
+
+          .hero-cta-row {
+            margin-top: 22px !important;
+            gap: 10px !important;
+          }
+
+          .hero-secondary-cta {
+            display: none !important;
           }
 
           .hero-bottom-info {
             left: 20px !important;
             right: 20px !important;
-            bottom: 24px !important;
+            bottom: 18px !important;
             max-width: calc(100% - 40px);
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: ${dark ? 'rgba(8,17,40,.34)' : 'rgba(255,255,255,.48)'};
+            border: 0.5px solid ${p.border};
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
           }
 
           .hero-bottom-info > div {
             flex-wrap: wrap;
+          }
+
+          .hero-bottom-info > div:first-child {
+            font-size: 13px !important;
+            letter-spacing: .16em !important;
+            margin-bottom: 4px !important;
+          }
+
+          .hero-bottom-info > div:nth-child(3),
+          .hero-bottom-info > div:nth-child(4) {
+            display: none !important;
           }
 
           .hero-scroll-indicator {

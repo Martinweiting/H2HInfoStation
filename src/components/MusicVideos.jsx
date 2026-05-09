@@ -1143,6 +1143,30 @@ export function MusicVideos({ dark }) {
         }
 
         @media (max-width: 760px) {
+          .music-intro {
+            padding: 36px 18px 18px;
+          }
+
+          .music-source-menu {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            margin-inline: -18px;
+            padding-inline: 18px;
+            scroll-snap-type: x proximity;
+            scrollbar-width: none;
+          }
+
+          .music-source-menu::-webkit-scrollbar {
+            display: none;
+          }
+
+          .music-source-menu a {
+            flex: 0 0 auto;
+            min-height: 44px;
+            scroll-snap-align: start;
+          }
+
           .music-carousel-shell {
             padding-inline: clamp(14px, 5vw, 28px);
           }
@@ -1181,8 +1205,60 @@ export function MusicVideos({ dark }) {
         }
 
         @media (max-width: 520px) {
+          .music-carousel-button,
+          .music-video-nav {
+            display: none !important;
+          }
+
+          .music-carousel-shell {
+            padding: 20px 18px 18px;
+          }
+
+          .music-carousel-item {
+            flex-basis: min(82vw, 330px);
+          }
+
+          .music-cover-card {
+            min-height: 300px;
+          }
+
+          .music-card-title {
+            left: 16px;
+            right: 16px;
+            bottom: 24px;
+            font-size: clamp(35px, 14vw, 54px);
+          }
+
+          .music-detail-wrap {
+            padding: 0 18px 36px;
+          }
+
+          .music-detail-panel {
+            border-radius: 12px;
+          }
+
+          .music-detail-hero {
+            padding: 60px 16px 20px;
+            gap: 18px;
+          }
+
+          .music-detail-hero h3 {
+            font-size: 42px !important;
+            line-height: .95 !important;
+          }
+
+          .music-action-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+          }
+
+          .music-stream-link {
+            min-height: 44px;
+            justify-content: center;
+          }
+
           .music-video-card {
-            flex-basis: min(78vw, 330px);
+            flex-basis: min(86vw, 330px);
             min-height: 250px;
           }
 
@@ -1190,26 +1266,14 @@ export function MusicVideos({ dark }) {
             min-height: 145px;
           }
 
-          .music-video-nav {
-            width: 38px;
-            height: 48px;
-          }
-
-          .music-video-grid {
-            padding-inline: 0;
-          }
-
           .music-video-carousel-shell.has-video-nav .music-video-grid {
-            padding-inline: 54px;
-            scroll-padding-inline: 54px;
+            padding-inline: 0;
+            scroll-padding-inline: 0;
           }
 
-          .music-video-nav-prev {
-            left: 8px;
-          }
-
-          .music-video-nav-next {
-            right: 8px;
+          .music-video-carousel-shell::before,
+          .music-video-carousel-shell::after {
+            display: none;
           }
         }
       `}</style>

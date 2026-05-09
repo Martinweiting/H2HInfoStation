@@ -76,7 +76,7 @@ export function Schedule({ dark }) {
         </div>
 
         {/* Tour city grid */}
-        <div style={{
+        <div className="tour-city-grid" style={{
           marginTop: 28, display: 'flex', flexWrap: 'wrap', gap: 12,
         }}>
           {TOUR_GROUPS.map((g, i) => (
@@ -108,7 +108,7 @@ export function Schedule({ dark }) {
         borderBottom: `0.5px solid ${p.rule}`,
       }}>
         {/* Feb 2026 calendar */}
-        <div style={{
+        <div className="schedule-calendar-panel" style={{
           padding: 'clamp(28px, 4vw, 48px) clamp(24px, 4vw, 48px)',
           borderRight: `0.5px solid ${p.rule}`,
         }}>
@@ -234,9 +234,42 @@ export function Schedule({ dark }) {
       </div>
       <style>{`
         @media (max-width: 520px) {
+          #schedule > div:first-child {
+            padding: 36px 18px 24px !important;
+          }
+
+          #schedule h2 {
+            font-size: 38px !important;
+          }
+
+          .tour-city-grid {
+            flex-wrap: nowrap !important;
+            overflow-x: auto;
+            margin-left: -18px !important;
+            margin-right: -18px !important;
+            padding: 0 18px 6px !important;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+          }
+
+          .tour-city-grid::-webkit-scrollbar {
+            display: none;
+          }
+
+          .tour-city-grid > div {
+            flex: 0 0 76vw !important;
+            scroll-snap-align: start;
+          }
+
+          .schedule-calendar-panel,
+          #schedule > div:nth-child(2) > div:last-child {
+            padding: 24px 18px !important;
+          }
+
           .schedule-event {
-            grid-template-columns: 52px minmax(0, 1fr) !important;
+            grid-template-columns: 48px minmax(0, 1fr) !important;
             gap: 12px !important;
+            padding: 13px 14px !important;
           }
 
           .schedule-badges {
@@ -245,6 +278,17 @@ export function Schedule({ dark }) {
             flex-direction: row !important;
             flex-wrap: wrap !important;
             margin-top: 2px;
+          }
+
+          .schedule-badges span {
+            min-height: 32px;
+            display: inline-flex;
+            align-items: center;
+          }
+
+          #schedule a,
+          #schedule button {
+            min-height: 44px;
           }
 
           .schedule-event * {

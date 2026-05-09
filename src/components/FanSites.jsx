@@ -235,6 +235,7 @@ function FanSiteModal({ member, dark, onClose }) {
               borderBottom: dark ? '1px solid rgba(255,255,255,.10)' : '1px solid rgba(26,43,69,.08)',
             }}>
               <button
+                className="fansite-modal-close"
                 onClick={onClose}
                 aria-label="關閉站子蒐集彈窗"
                 style={{
@@ -293,6 +294,7 @@ function FanSiteModal({ member, dark, onClose }) {
             >
               {sites.map(site => (
                 <a
+                  className="fansite-link"
                   key={site.url}
                   href={site.url}
                   target="_blank"
@@ -589,6 +591,77 @@ export function FanSites({ dark }) {
 
             .fansite-grid {
               grid-template-columns: minmax(0, 1fr) !important;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .fansite-header {
+              padding: 36px 18px 20px !important;
+              gap: 16px !important;
+            }
+
+            .fansite-header h2 {
+              font-size: 38px !important;
+            }
+
+            .fansite-grid {
+              padding: 22px 18px 36px !important;
+              gap: 12px !important;
+            }
+
+            .fansite-card {
+              min-height: 0 !important;
+              display: grid !important;
+              grid-template-columns: 108px minmax(0, 1fr) !important;
+              grid-template-rows: none !important;
+              align-items: stretch !important;
+            }
+
+            .fansite-card:hover {
+              transform: none !important;
+            }
+
+            .fansite-image-slot {
+              height: auto !important;
+              min-height: 130px !important;
+              padding: 8px !important;
+              border-bottom: 0 !important;
+              border-right: ${dark ? '1px solid rgba(255,255,255,.10)' : '1px solid rgba(26,43,69,.08)'} !important;
+            }
+
+            .fansite-card > div:last-child {
+              padding: 14px 14px 16px !important;
+              display: flex !important;
+              flex-direction: column !important;
+              justify-content: center !important;
+            }
+
+            .fansite-card .ff-display {
+              font-size: 26px !important;
+            }
+
+            .fansite-card > div:last-child > div:last-child {
+              margin-top: 10px !important;
+              padding-top: 10px !important;
+              font-size: 13px !important;
+            }
+
+            .fansite-link {
+              grid-template-columns: 42px minmax(0, 1fr) !important;
+              min-height: 64px !important;
+              padding: 12px !important;
+              gap: 12px !important;
+            }
+
+            .fansite-link > span:last-child {
+              display: none !important;
+            }
+
+            .fansite-modal-close {
+              width: 44px !important;
+              height: 44px !important;
+              top: 12px !important;
+              right: 12px !important;
             }
           }
 
