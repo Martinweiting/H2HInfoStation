@@ -587,6 +587,36 @@ export function About({ dark }) {
 
       </div>
       <style>{`
+        @media (min-width: 900px) {
+          #about > div:last-child {
+            padding: clamp(42px, 5.5vw, 72px) clamp(40px, 4.6vw, 64px) 36px !important;
+          }
+
+          .about-main-grid {
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 384px) !important;
+            gap: clamp(24px, 3vw, 48px) !important;
+            align-items: start !important;
+          }
+
+          .about-copy-block {
+            align-self: start !important;
+            padding-top: clamp(4px, 1vw, 14px) !important;
+          }
+
+          .about-orbit-wrap {
+            grid-column: 2 !important;
+            grid-row: 1 !important;
+            justify-self: stretch !important;
+            width: 100% !important;
+          }
+
+          .about-stat-grid {
+            grid-column: 1 / -1 !important;
+            grid-row: 2 !important;
+            margin-top: clamp(20px, 2.5vw, 34px) !important;
+          }
+        }
+
         @media (max-width: 480px) {
           #about > div:last-child {
             padding: 34px 18px 36px !important;

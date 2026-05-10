@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, MapPin, Star, Globe, Home, Sparkles } from 'lucide-react'
+import { X, MapPin, Star, Globe, Home, Sparkles, Music } from 'lucide-react'
 import { Placeholder } from './Placeholder.jsx'
 import { getMemberPhoto } from '../data/memberPhotos.js'
 
@@ -189,6 +189,7 @@ export function MemberModal({ member, photoStyle = 'polaroid', onClose }) {
               )}
               <InfoRow icon={Star} label="偶像 / 榜樣" value={m.idol} accent={c.accent} />
               <InfoRow icon={Sparkles} label="特長" value={m.specialty} accent={c.accent} />
+              <InfoRow icon={Music} label="試鏡演唱歌曲" value={m.auditionSong} accent={c.accent} />
               <InfoRow icon={Home} label="宿舍" value={m.dorm} accent={c.accent} />
 
               {/* Inspired */}

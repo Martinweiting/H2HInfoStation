@@ -11,6 +11,7 @@ export const MEMBERS = [
     idol: '少女時代（SNSD）',
     languages: ['印尼語', '韓語', '英語'],
     specialty: '魔術、多種樂器演奏、多語歌唱',
+    auditionSong: 'Daniel Caesar  - Best Part feat H.E.R',
     inspired: '受少女時代《The Boys》啟發，決心走上偶像之路',
     dorm: '宿舍一（室友：Jiwoo）',
     trivia: [
@@ -37,6 +38,7 @@ export const MEMBERS = [
     idol: 'aespa Karina',
     languages: ['韓語'],
     specialty: '芭蕾舞、攝影',
+    auditionSong: '대한민국의 국가 (大韓民國國歌, National anthem of South Korea)',
     inspired: '從小接受芭蕾訓練，在正式練習生前已建立扎實的舞蹈基礎',
     dorm: '宿舍一（室友：Carmen）',
     trivia: [
@@ -63,10 +65,11 @@ export const MEMBERS = [
     idol: '少女時代 太妍（Taeyeon）',
     languages: ['韓語'],
     specialty: '完美音感、全能型表演',
+    auditionSong: 'Kristen Bell & Santino Fontana - Love is an Open Door by',
     inspired: '憑藉天生的完美音感在練習生時期脫穎而出',
     dorm: '宿舍二（室友：Ian）',
     trivia: [
-      '有雙胞胎姊姊，自己比姊姊晚出生2分鐘，是雙胞胎中的妹妹',
+      '有雙胞胎姊姊，自己比姊姊早出生2分鐘，是雙胞胎中的姊姊',
       '曾三度在街頭被不同星探發掘',
       '擁有天生的完美音感（Perfect Pitch）',
       '英文名為 Maria Yu',
@@ -81,7 +84,7 @@ export const MEMBERS = [
   },
   {
     en: 'Stella', kr: '스텔라', zh: '金多絢',
-    fullName: 'Stella Dahyun Kim',
+    fullName: 'Dahyun Stella Kim',
     role: '歌唱擔當',
     mbti: 'ENFP', bday: '2007.06.18',
     emoji: '⭐', tone: 'cream',
@@ -91,6 +94,7 @@ export const MEMBERS = [
     idol: 'Red Velvet Wendy',
     languages: ['韓語', '英語'],
     specialty: '跆拳道（黑帶）、左撇子創作',
+    auditionSong: 'Chrisette Michele - Like A Dream',
     inspired: '在加拿大成長並接觸韓流文化後，立志回韓國追夢',
     dorm: '宿舍一（室友：A-na）',
     trivia: [
@@ -118,6 +122,7 @@ export const MEMBERS = [
     idol: 'BoA',
     languages: ['韓語'],
     specialty: '舞蹈編排、舞蹈動作學習速度全隊最快',
+    auditionSong: 'LeeHi - Holo',
     inspired: '受 BoA 出道曲《ID; Peace B》啟發，從此立志成為舞者型偶像',
     dorm: '宿舍二（室友：Ye-on）',
     trivia: [
@@ -144,6 +149,7 @@ export const MEMBERS = [
     idol: '少女時代 潤娥（Yoona）',
     languages: ['韓語'],
     specialty: '主持、高能量舞台表現',
+    auditionSong: '대한민국의 국가 (大韓民國國歌, National anthem of South Korea)',
     inspired: '被少女時代潤娥的舞台魅力深深吸引，立志走向同樣的道路',
     dorm: '宿舍一（室友：Stella）',
     trivia: [
@@ -170,6 +176,7 @@ export const MEMBERS = [
     idol: '（未公開）',
     languages: ['韓語'],
     specialty: '香水品鑑、氣氛炒熱、前兒童模特兒',
+    auditionSong: 'Idina Menzel - Let It Go (電影：冰雪奇緣Frozen主題曲)',
     inspired: '在兒童模特兒時期接觸演藝圈，逐漸愛上舞台表演',
     dorm: '宿舍二（室友：Yuha）',
     trivia: [
@@ -196,6 +203,7 @@ export const MEMBERS = [
     idol: '少女時代 太妍（Taeyeon）',
     languages: ['韓語'],
     specialty: '音樂劇演唱、古典聲樂訓練',
+    auditionSong: 'Jessie J - Price Tag',
     inspired: '從5、6歲起便開始接觸歌唱，音樂是她從小最忠實的夥伴',
     dorm: '宿舍二（室友：Juun）',
     trivia: [

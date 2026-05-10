@@ -31,6 +31,12 @@ const FAN_SITE_LINKS = {
     'ravi_carmen',
     'carmenitaisland',
     'vow060328',
+    'LocatedinCARMEN',
+    'carmen_juun',
+    'Peachy_H2H',
+    'daiiiili_0328',
+    'Carmine0328',
+    'Cacarmen_0328',
   ],
   Jiwoo: [
     'Blue_jiwoo',
@@ -58,6 +64,15 @@ const FAN_SITE_LINKS = {
     'HERSH_97',
     'dotdotdiary_',
     'DOUX_jw',
+    'swae_jw',
+    'anson_jiwoo',
+    'two_0224',
+    'berrycream_9O7',
+    'Jiwoo_Ice',
+    'Star_jiwoo',
+    'Canvas_cjw',
+    'story_0907',
+    'move_myheart',
   ],
   Yuha: [
     'yuhappyplace',
@@ -69,6 +84,26 @@ const FAN_SITE_LINKS = {
     'Yurora_0412',
     'yuha_poetry',
     'yours_yh',
+    'Cherrsnows',
+    'Bluemoon_S2U',
+    'LunaBunny_0412',
+    'mirai42322',
+    '_yuhanCcco',
+    'Drizzle_yuha',
+    'mintoreo0',
+    'Icebread0412',
+    'Blossomfor0412',
+    'ThinkabU_0412',
+    'wwwyuhacom',
+    'Utopia0412',
+    'luvyuyu_0412',
+    'bylemon32',
+    'lovepotion_yuha',
+    'HelloHaram',
+    'youself_0412',
+    '__GLAF__',
+    'Yu_harmony0412',
+    'YuBunny_',
   ],
   Stella: [
     'Etoile_0618',
@@ -83,6 +118,12 @@ const FAN_SITE_LINKS = {
     'T_Tiramisu618',
     'im_uaaii',
     'IntCelestella',
+    'xlian1020',
+    'LaLaLand_Stella',
+    'YumeJe_0618',
+    'IntotheStella',
+    'tonyangi0618',
+    'StyleStella0618',
   ],
   Juun: [
     'Soar_1203',
@@ -90,6 +131,15 @@ const FAN_SITE_LINKS = {
     'purplepearl1203',
     'Isaro1203',
     'romii22__',
+    'Moonlight_juun',
+    'Iris_juun1203',
+    'Isaro_1203',
+    'Xi0enen',
+    'Puddingforjuun',
+    'ChuEun1203',
+    'juuntteok',
+    '1203UFO',
+    'Polaris_JUUN',
   ],
   'A-na': [
     'DeerAna_1220',
@@ -97,6 +147,16 @@ const FAN_SITE_LINKS = {
     'cupidpink_',
     'muse_1220',
     'waaoai11',
+    'lunana_nyn',
+    'angewith_',
+    'PaS2s2ion',
+    'tangerine_yn',
+    'Analogous_1220',
+    'NayAna_H2H',
+    'sky_ana1220',
+    'hwanono',
+    'BeH2H_',
+    'smile__1220',
   ],
   Ian: [
     'shizuku_9',
@@ -111,6 +171,14 @@ const FAN_SITE_LINKS = {
     'I_Andlove',
     'shizuku9',
     'kissbye0',
+    'CherryPinkLove_',
+    'Cherrypop1009',
+    'IANITY_1009',
+    'wink_ian',
+    'MagicIAN1009',
+    'eee2an',
+    'dopamIAN_',
+    'IAND_miaomiao',
   ],
   'Ye-on': [
     'onfor19',
@@ -118,6 +186,85 @@ const FAN_SITE_LINKS = {
     'yee5n_i',
     'HoneyBear0419',
     'Ayla_yeon',
+    'Yuwu_419',
+    'ahchoo_yeon419',
+    'sweettiepie0419',
+    'il0veye0n',
+    'Kioo_0419',
+    'naluv419',
+  ],
+}
+
+const FAN_SITE_MULTI_LINKS = {
+  Carmen: [
+    {
+      with: 'Jiwoo',
+      handles: ['0805_0205', 'SolnArt_06', 'c_lover_u'],
+    },
+  ],
+  Jiwoo: [
+    {
+      with: 'Carmen',
+      handles: ['0805_0205', 'SolnArt_06', 'c_lover_u'],
+    },
+    {
+      with: 'Yuha',
+      handles: ['YPreviewJ_0612', 'ddalgikkong', 'Minmozka', 'Bom2Bon'],
+    },
+    {
+      with: 'Ian',
+      handles: ['pretzel_ez', 'jjoro_9'],
+    },
+    {
+      with: 'Juun',
+      handles: ['syzygy_2110'],
+    },
+  ],
+  Yuha: [
+    {
+      with: 'Jiwoo',
+      handles: ['YPreviewJ_0612', 'ddalgikkong', 'Minmozka', 'Bom2Bon'],
+    },
+    {
+      with: 'Ian',
+      handles: ['Bungeoppang50'],
+    },
+    {
+      with: 'A-na',
+      handles: ['No12an'],
+    },
+  ],
+  'A-na': [
+    {
+      with: 'Yuha',
+      handles: ['No12an'],
+    },
+  ],
+  Stella: [
+    {
+      with: 'Ian',
+      handles: ['h2h161627'],
+    },
+  ],
+  Juun: [
+    {
+      with: 'Jiwoo',
+      handles: ['syzygy_2110'],
+    },
+  ],
+  Ian: [
+    {
+      with: 'Stella',
+      handles: ['h2h161627'],
+    },
+    {
+      with: 'Jiwoo',
+      handles: ['pretzel_ez', 'jjoro_9'],
+    },
+    {
+      with: 'Yuha',
+      handles: ['Bungeoppang50'],
+    },
   ],
 }
 
@@ -145,8 +292,7 @@ function normalizeHandle(handle) {
     .replace(/[/?#].*$/, '')
 }
 
-function sitesFor(member) {
-  const handles = FAN_SITE_LINKS[member.en] || []
+function siteEntriesFor(member, handles, withMember) {
   const seen = new Set()
 
   return handles.reduce((sites, rawHandle) => {
@@ -156,16 +302,39 @@ function sitesFor(member) {
     seen.add(key)
     sites.push({
       handle,
-      label: `${member.en} @${handle}`,
+      label: withMember ? `${member.en},${withMember} @${handle}` : `${member.en} @${handle}`,
       url: `https://x.com/${handle}`,
     })
     return sites
   }, [])
 }
 
+function sitesFor(member) {
+  return siteEntriesFor(member, FAN_SITE_LINKS[member.en] || [])
+}
+
+function groupedSitesFor(member) {
+  const groups = FAN_SITE_MULTI_LINKS[member.en] || []
+
+  return groups
+    .map(group => ({
+      with: group.with,
+      sites: siteEntriesFor(member, group.handles, group.with),
+    }))
+    .filter(group => group.sites.length > 0)
+}
+
+function allSitesFor(member) {
+  return [
+    ...sitesFor(member),
+    ...groupedSitesFor(member).flatMap(group => group.sites),
+  ]
+}
+
 function FanSiteModal({ member, dark, onClose }) {
   const tone = TONE_STYLES[member?.tone] || TONE_STYLES.sky
   const sites = member ? sitesFor(member) : []
+  const groupedSites = member ? groupedSitesFor(member) : []
 
   useEffect(() => {
     if (!member) return
@@ -345,6 +514,77 @@ function FanSiteModal({ member, dark, onClose }) {
                   <ExternalLink size={18} color={tone.accent} />
                 </a>
               ))}
+              {groupedSites.map(group => (
+                <div key={`${member.en}-${group.with}`} style={{
+                  display: 'grid',
+                  gap: 10,
+                  marginTop: 14,
+                  paddingTop: 18,
+                  borderTop: dark ? '1px solid rgba(255,255,255,.10)' : '1px solid rgba(26,43,69,.08)',
+                }}>
+                  <div style={{
+                    fontFamily: 'var(--ff-mono)',
+                    fontSize: 14,
+                    letterSpacing: '.18em',
+                    color: dark ? 'rgba(248,250,255,.52)' : 'rgba(26,43,69,.48)',
+                  }}>
+                    {member.en},{group.with}
+                  </div>
+                  {group.sites.map(site => (
+                    <a
+                      className="fansite-link"
+                      key={site.url}
+                      href={site.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'auto minmax(0, 1fr) auto',
+                        alignItems: 'center',
+                        gap: 14,
+                        padding: 16,
+                        borderRadius: 12,
+                        background: dark ? 'rgba(255,255,255,.06)' : '#FFFFFF',
+                        border: dark ? '1px solid rgba(255,255,255,.12)' : '1px solid rgba(26,43,69,.10)',
+                        boxShadow: dark ? 'none' : '0 10px 24px rgba(26,43,69,.08)',
+                      }}
+                    >
+                      <span style={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: 12,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: tone.accentSoft,
+                        color: tone.accent,
+                      }}>
+                        <Globe2 size={20} />
+                      </span>
+                      <span style={{ minWidth: 0 }}>
+                        <span style={{
+                          display: 'block',
+                          fontSize: 19,
+                          fontWeight: 700,
+                          color: dark ? '#F8FAFF' : '#1A2B45',
+                        }}>
+                          {site.label}
+                        </span>
+                        <span style={{
+                          display: 'block',
+                          marginTop: 3,
+                          fontSize: 15.5,
+                          color: dark ? 'rgba(248,250,255,.54)' : 'rgba(26,43,69,.52)',
+                          overflowWrap: 'anywhere',
+                        }}>
+                          {site.url}
+                        </span>
+                      </span>
+                      <ExternalLink size={18} color={tone.accent} />
+                    </a>
+                  ))}
+                </div>
+              ))}
             </div>
           </motion.div>
         </>
@@ -355,7 +595,7 @@ function FanSiteModal({ member, dark, onClose }) {
 
 function FanSiteCard({ member, index, dark, onOpen }) {
   const tone = TONE_STYLES[member.tone] || TONE_STYLES.sky
-  const siteCount = sitesFor(member).length
+  const siteCount = allSitesFor(member).length
   const photo = photoFor(member)
   const imageSlotHeight = 248
 
